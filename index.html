@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Titan Software Guild - Build the Digital Future</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #00d4ff;
+            --secondary-color: #ff00ff;
+            --accent-color: #ffaa00;
+            --dark-bg: #0a0a0f;
+            --darker-bg: #050508;
+            --card-bg: rgba(20, 20, 35, 0.8);
+            --text-light: #ffffff;
+            --text-gray: #b0b0c0;
+            --gradient-1: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
+            --gradient-2: linear-gradient(135deg, #ff00ff 0%, #ff0066 100%);
+            --gradient-3: linear-gradient(135deg, #00d4ff 0%, #ff00ff 50%, #ffaa00 100%);
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+        }
+
+        /* Animated Background */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: radial-gradient(ellipse at center, #0a0a0f 0%, #050508 100%);
+        }
+
+        .circuit-line {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 0%, var(--primary-color) 50%, transparent 100%);
+            opacity: 0.3;
+            animation: circuitFlow 8s linear infinite;
+        }
+
+        .circuit-line:nth-child(1) {
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .circuit-line:nth-child(2) {
+            left: 50%;
+            animation-delay: 2s;
+        }
+
+        .circuit-line:nth-child(3) {
+            left: 80%;
+            animation-delay: 4s;
+        }
+
+        @keyframes circuitFlow {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(100%);
+            }
+        }
+
+        .glow-orb {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: orbFloat 15s ease-in-out infinite;
+        }
+
+        .glow-orb:nth-child(4) {
+            background: var(--primary-color);
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .glow-orb:nth-child(5) {
+            background: var(--secondary-color);
+            top: 50%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+
+        .glow-orb:nth-child(6) {
+            background: var(--accent-color);
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 10s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-50px, 50px) scale(0.9);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 1;
+        }
+
+        .titan-badge {
+            display: inline-block;
+            padding: 10px 30px;
+            background: var(--gradient-1);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 30px;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .gradient-text {
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                filter: hue-rotate(0deg);
+            }
+            50% {
+                filter: hue-rotate(30deg);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text-gray);
+            margin-bottom: 50px;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: var(--text-light);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            }
+            50% {
+                box-shadow: 0 10px 50px rgba(0, 212, 255, 0.6);
+            }
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            text-align: center;
+            margin-bottom: 60px;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Mission Section */
+        .mission {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .mission-text {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .mission-text.highlight {
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+        }
+
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .benefit-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .benefit-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--darker-bg);
+        }
+
+        .skills-intro {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .skill-item {
+            background: var(--card-bg);
+            padding: 20px 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-item:hover {
+            border-color: var(--primary-color);
+            transform: translateX(5px);
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        /* Urgency Section */
+        .urgency {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-top: 2px solid var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .urgency-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .urgency-text {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .urgency-text.highlight {
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Membership Section */
+        .membership {
+            background: var(--darker-bg);
+        }
+
+        .membership-intro {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .membership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .membership-card {
+            background: var(--card-bg);
+            padding: 50px 40px;
+            border-radius: 20px;
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .membership-card.featured {
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 170, 0, 0.3);
+        }
+
+        .membership-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 212, 255, 0.3);
+        }
+
+        .membership-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .membership-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: var(--gradient-1);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .membership-badge.popular {
+            background: var(--gradient-2);
+        }
+
+        .membership-card h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .membership-card.featured h3 {
+            color: var(--accent-color);
+        }
+
+        .membership-description {
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .membership-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .membership-features li {
+            padding: 12px 0;
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-membership,
+        .btn-membership-featured {
+            width: 100%;
+            text-align: center;
+            padding: 18px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: block;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .btn-membership {
+            background: var(--gradient-1);
+            color: var(--text-light);
+        }
+
+        .btn-membership-featured {
+            background: linear-gradient(135deg, #ffaa00 0%, #ff6600 100%);
+            color: var(--text-light);
+            box-shadow: 0 10px 30px rgba(255, 170, 0, 0.4);
+        }
+
+        .btn-membership:hover,
+        .btn-membership-featured:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-intro {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 18px 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            border-radius: 15px;
+            color: var(--text-light);
+            font-size: 1.05rem;
+            font-family: 'Rajdhani', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: var(--text-gray);
+        }
+
+        .contact-form button {
+            width: 100%;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            background: var(--darker-bg);
+            text-align: center;
+        }
+
+        .final-cta-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .final-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 30px;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .final-text {
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .final-tagline {
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            color: var(--text-light);
+            margin-bottom: 50px;
+        }
+
+        .btn-large {
+            padding: 22px 60px;
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--darker-bg);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .footer p {
+            color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+
+        .footer-tagline {
+            font-style: italic;
+            color: var(--primary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .hero-stats {
+                gap: 30px;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .benefits-grid,
+            .skills-grid,
+            .membership-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .membership-card.featured {
+                transform: scale(1);
+            }
+
+            .membership-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection Color */
+        ::selection {
+            background: var(--primary-color);
+            color: var(--dark-bg);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            50% {
+                transform: translate(50px, -50px);
+            }
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <div class="circuit-line"></div>
+        <div class="circuit-line"></div>
+        <div class="circuit-line"></div>
+        <div class="glow-orb"></div>
+        <div class="glow-orb"></div>
+        <div class="glow-orb"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="titan-badge">⚡ THE TITAN SOFTWARE GUILD ⚡</div>
+            <h1 class="hero-title">
+                The Titans Are Rising<br>
+                <span class="gradient-text">And You Can Be One</span>
+            </h1>
+            <p class="hero-subtitle">
+                Where beginners, veterans, kids, and even 60-year-olds come together to master the world of software through hands-on projects and AI-powered learning. This is your moment to forge your digital destiny.
+            </p>
+            <div class="cta-buttons">
+                <a href="#join" class="btn btn-primary pulse">Join the Guild Now</a>
+                <a href="#skills" class="btn btn-secondary">Explore Your Powers</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Possibilities</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">AI</span>
+                    <span class="stat-label">Powered</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">All Ages</span>
+                    <span class="stat-label">Welcome</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Statement -->
+    <section class="mission">
+        <div class="container">
+            <h2 class="section-title">The Greatest Time in Human History</h2>
+            <p class="mission-text">
+                Right now, at this very moment, the tools of creation are in your hands. AI has shattered every barrier that once stood between you and building the digital future. Age doesn't matter. Background doesn't matter. What matters is your willingness to rise, to learn, to create.
+            </p>
+            <p class="mission-text highlight">
+                The Titan Software Guild is where ordinary people become extraordinary creators. Where dreams transform into apps, games, websites, and intelligent systems that change lives.
+            </p>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Why Join the <span class="gradient-text">Titan Guild</span></h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚀</div>
+                    <h3>Future-Proof Skills</h3>
+                    <p>Master technologies that create financial freedom, unlock creativity, and build unshakeable confidence. These aren't just skills—they're superpowers.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤝</div>
+                    <h3>Community of Innovators</h3>
+                    <p>Join a guild of creators who build together, share victories, and lift each other higher. You're not learning alone—you're rising with Titans.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>AI Levels the Playing Field</h3>
+                    <p>Whether you're 12 or 60, AI has made it possible for anyone to create powerful software. The only limit is your imagination.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">What You Can Learn with <span class="gradient-text">AI</span></h2>
+            <p class="skills-intro">These are just the beginning. With AI as your co-pilot, you can master any digital skill and bring any vision to life.</p>
+            
+            <div class="skills-grid">
+                <div class="skill-item">🎮 Build video games with AI tools</div>
+                <div class="skill-item">📱 Design mobile apps</div>
+                <div class="skill-item">🌐 Create professional websites</div>
+                <div class="skill-item">🎨 Generate 3D characters and animations</div>
+                <div class="skill-item">🤖 Automate business tasks</div>
+                <div class="skill-item">💬 Develop AI chatbots</div>
+                <div class="skill-item">✨ Design user interfaces (UI/UX)</div>
+                <div class="skill-item">🛒 Build eCommerce platforms</div>
+                <div class="skill-item">🎭 Make digital art with AI</div>
+                <div class="skill-item">🎵 Compose AI-generated music</div>
+                <div class="skill-item">📺 Create YouTube automation systems</div>
+                <div class="skill-item">📚 Write novels or screenplays with AI help</div>
+                <div class="skill-item">📊 Build data dashboards</div>
+                <div class="skill-item">🥽 Make augmented reality (AR) apps</div>
+                <div class="skill-item">🌌 Build virtual reality (VR) experiences</div>
+                <div class="skill-item">📲 Automate social media content</div>
+                <div class="skill-item">🎯 Generate logos and brand kits</div>
+                <div class="skill-item">🧠 Make your own AI assistant</div>
+                <div class="skill-item">🔒 Learn cybersecurity basics</div>
+                <div class="skill-item">🛠️ Develop your own software tools</div>
+                <div class="skill-item">🖼️ Create NFT art collections</div>
+                <div class="skill-item">⏰ Build productivity apps</div>
+                <div class="skill-item">🔬 Train custom AI models</div>
+                <div class="skill-item">💻 Code in Python, JavaScript, and more</div>
+                <div class="skill-item">🎬 Build AI video editors</div>
+                <div class="skill-item">📈 Analyze data visually</div>
+                <div class="skill-item">📖 Create educational apps</div>
+                <div class="skill-item">⚙️ Build automation workflows</div>
+                <div class="skill-item">🎞️ Design motion graphics</div>
+                <div class="skill-item">✍️ Write better with AI editors</div>
+                <div class="skill-item">📜 Create interactive storytelling</div>
+                <div class="skill-item">🎲 Build game engines</div>
+                <div class="skill-item">🔊 Design soundscapes and audio AI</div>
+                <div class="skill-item">📋 Automate spreadsheets and business processes</div>
+                <div class="skill-item">👨‍🏫 Create virtual mentors</div>
+                <div class="skill-item">💼 Build coding portfolios</div>
+                <div class="skill-item">📣 Generate marketing campaigns</div>
+                <div class="skill-item">☁️ Develop cloud-based applications</div>
+                <div class="skill-item">🏢 Build AI-powered tools for small businesses</div>
+                <div class="skill-item">🌊 Create immersive web experiences</div>
+                <div class="skill-item">🗣️ Build text-to-speech and voice apps</div>
+                <div class="skill-item">💁 Train chatbots for customer service</div>
+                <div class="skill-item">👁️ Create image recognition systems</div>
+                <div class="skill-item">🏠 Build your personal AI-powered website</div>
+                <div class="skill-item">🎓 Develop online courses</div>
+                <div class="skill-item">🔌 Learn API integration</div>
+                <div class="skill-item">💰 Create financial or trading bots</div>
+                <div class="skill-item">🚀 Build your own AI startup ideas</div>
+                <div class="skill-item">🎯 Learn how to prompt engineer AI models</div>
+                <div class="skill-item">✨ Build anything your imagination allows</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Urgency Section -->
+    <section class="urgency">
+        <div class="container">
+            <div class="urgency-content">
+                <h2 class="section-title">This Is Your Moment</h2>
+                <p class="urgency-text">
+                    We are living through the greatest technological revolution in human history. AI and software creation are rewriting the rules of what's possible. Right now, in this moment, you have access to tools that would have seemed like magic just five years ago.
+                </p>
+                <p class="urgency-text">
+                    But here's the truth: <strong>waiting means being left behind.</strong> While you hesitate, others are building, creating, and claiming their place in the digital future. The gap between those who create technology and those who merely consume it is widening every single day.
+                </p>
+                <p class="urgency-text highlight">
+                    Don't be a spectator in the digital revolution. Be a creator. Be a Titan.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section class="membership" id="join">
+        <div class="container">
+            <h2 class="section-title">Choose Your <span class="gradient-text">Path</span></h2>
+            <p class="membership-intro">Select the membership that fits your journey. Both paths lead to the same destination: mastery.</p>
+            
+            <div class="membership-grid">
+                <div class="membership-card">
+                    <div class="membership-badge">Monthly</div>
+                    <h3>Titan Apprentice</h3>
+                    <p class="membership-description">Perfect for those who want to start their journey with flexibility. Learn at your own pace, month by month.</p>
+                    <ul class="membership-features">
+                        <li>✓ Full access to all courses</li>
+                        <li>✓ AI-powered learning tools</li>
+                        <li>✓ Community support</li>
+                        <li>✓ Hands-on projects</li>
+                        <li>✓ Cancel anytime</li>
+                    </ul>
+                    <a href="https://buy.stripe.com/28E00kaRH0404TE4F97AI0b" class="btn-membership">Start Monthly Journey</a>
+                </div>
+
+                <div class="membership-card featured">
+                    <div class="membership-badge popular">Most Popular</div>
+                    <h3>Titan Master</h3>
+                    <p class="membership-description">For those ready to commit to their transformation. The fastest path to mastery with the best value.</p>
+                    <ul class="membership-features">
+                        <li>✓ Full access to all courses</li>
+                        <li>✓ AI-powered learning tools</li>
+                        <li>✓ Priority community support</li>
+                        <li>✓ Exclusive advanced projects</li>
+                        <li>✓ Best value - save with annual</li>
+                    </ul>
+                    <a href="https://buy.stripe.com/00w5kE8Jz4kgfyi7Rl7AI0c" class="btn-membership-featured">Start Yearly Journey</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">Have Questions? <span class="gradient-text">Reach Out</span></h2>
+            <p class="contact-intro">We're here to help you begin your journey. Send us a message and we'll get back to you quickly.</p>
+            
+            <form action="https://formsubmit.co/titanbusinesspros@gmail.com" method="POST" class="contact-form">
+                <input type="hidden" name="_subject" value="New Contact Form Submission from Titan Business Pros">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://titanbusinesspros.github.io/MooreOklahoma/thankyou.html">
+                
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Your Phone" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="final-cta-content">
+                <h2 class="final-title">Titans Aren't Born—They're Forged</h2>
+                <p class="final-text">
+                    The tools of creation are finally in your hands. Whether you're 12 or 60, your time to build is now. Join The Titan Software Guild—and become a creator of tomorrow.
+                </p>
+                <p class="final-tagline">
+                    <strong>Don't watch the future happen. Build it.</strong>
+                </p>
+                <a href="#join" class="btn btn-primary btn-large pulse">Forge Your Future Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Titan Business Pros LLC. All rights reserved.</p>
+            <p class="footer-tagline">Building the Digital Future, One Titan at a Time</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation effects
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for fade-in animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(section);
+            });
+
+            // Animate skill items on scroll
+            const skillItems = document.querySelectorAll('.skill-item');
+            skillItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-20px)';
+                item.style.transition = `opacity 0.5s ease ${index * 0.02}s, transform 0.5s ease ${index * 0.02}s`;
+                observer.observe(item);
+            });
+
+            // Animate benefit cards
+            const benefitCards = document.querySelectorAll('.benefit-card');
+            benefitCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
+                observer.observe(card);
+            });
+
+            // Animate membership cards
+            const membershipCards = document.querySelectorAll('.membership-card');
+            membershipCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
+                observer.observe(card);
+            });
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-content');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                hero.style.opacity = 1 - (scrolled / 800);
+            }
+        });
+
+        // Form submission feedback
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                const button = contactForm.querySelector('button[type="submit"]');
+                button.textContent = 'Sending...';
+                button.style.opacity = '0.7';
+            });
+        }
+
+        // Add dynamic glow effect to buttons on hover
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.filter = 'brightness(1.2)';
+            });
+            button.addEventListener('mouseleave', function() {
+                this.style.filter = 'brightness(1)';
+            });
+        });
+
+        // Create floating particles effect
+        function createParticles() {
+            const particlesContainer = document.createElement('div');
+            particlesContainer.className = 'particles-container';
+            particlesContainer.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: -1;
+            `;
+            document.body.appendChild(particlesContainer);
+
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 2px;
+                    height: 2px;
+                    background: rgba(0, 212, 255, 0.5);
+                    border-radius: 50%;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation: float ${5 + Math.random() * 10}s ease-in-out infinite;
+                    animation-delay: ${Math.random() * 5}s;
+                `;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles
+        createParticles();
+
+        // Add hover effect to skill items
+        document.querySelectorAll('.skill-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(10px) scale(1.02)';
+            });
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0) scale(1)';
+            });
+        });
+
+        // Prevent form resubmission on page refresh
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    </script>
+</body>
+
+</html>
+
+
