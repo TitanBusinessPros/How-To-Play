@@ -3,1131 +3,797 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Titan Software Guild - Build the Digital Future</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <title>After Gate - Strategy Space War Game</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        :root {
-            --primary-color: #00d4ff;
-            --secondary-color: #ff00ff;
-            --accent-color: #ffaa00;
-            --dark-bg: #0a0a0f;
-            --darker-bg: #050508;
-            --card-bg: rgba(20, 20, 35, 0.8);
-            --text-light: #ffffff;
-            --text-gray: #b0b0c0;
-            --gradient-1: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
-            --gradient-2: linear-gradient(135deg, #ff00ff 0%, #ff0066 100%);
-            --gradient-3: linear-gradient(135deg, #00d4ff 0%, #ff00ff 50%, #ffaa00 100%);
-        }
-
+        
         body {
-            font-family: 'Rajdhani', sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-light);
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #0a0e27, #1a1f3a);
+            color: #e0e0e0;
             line-height: 1.6;
-            overflow-x: hidden;
         }
-
-        h1, h2, h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-        }
-
-        /* Animated Background */
-        .background-animation {
-            position: fixed;
+        
+        nav {
+            background: rgba(10, 14, 39, 0.95);
+            padding: 1rem 2rem;
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-            background: radial-gradient(ellipse at center, #0a0a0f 0%, #050508 100%);
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 255, 255, 0.3);
         }
-
-        .circuit-line {
-            position: absolute;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(180deg, transparent 0%, var(--primary-color) 50%, transparent 100%);
-            opacity: 0.3;
-            animation: circuitFlow 8s linear infinite;
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
-
-        .circuit-line:nth-child(1) {
-            left: 20%;
-            animation-delay: 0s;
+        
+        nav a {
+            color: #00ffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
         }
-
-        .circuit-line:nth-child(2) {
-            left: 50%;
-            animation-delay: 2s;
+        
+        nav a:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
         }
-
-        .circuit-line:nth-child(3) {
-            left: 80%;
-            animation-delay: 4s;
+        
+        nav a.active {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
         }
-
-        @keyframes circuitFlow {
-            0% {
-                transform: translateY(-100%);
-            }
-            100% {
-                transform: translateY(100%);
-            }
+        
+        .page {
+            display: none;
         }
-
-        .glow-orb {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.15;
-            animation: orbFloat 15s ease-in-out infinite;
+        
+        .page.active {
+            display: block;
         }
-
-        .glow-orb:nth-child(4) {
-            background: var(--primary-color);
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #1a1f3a, #2a1f4a);
         }
-
-        .glow-orb:nth-child(5) {
-            background: var(--secondary-color);
-            top: 50%;
-            right: 10%;
-            animation-delay: 5s;
+        
+        .hero h1 {
+            font-size: 4rem;
+            color: #00ffff;
+            text-shadow: 0 0 20px #00ffff;
+            margin-bottom: 1rem;
         }
-
-        .glow-orb:nth-child(6) {
-            background: var(--accent-color);
-            bottom: 10%;
-            left: 50%;
-            animation-delay: 10s;
+        
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: #ff00ff;
+            margin-bottom: 2rem;
         }
-
-        @keyframes orbFloat {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            33% {
-                transform: translate(50px, -50px) scale(1.1);
-            }
-            66% {
-                transform: translate(-50px, 50px) scale(0.9);
-            }
-        }
-
-        /* Container */
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 2rem;
         }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
+        
+        .section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(26, 31, 58, 0.6);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+        
+        .section-header {
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 100px 20px;
-            position: relative;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
-
-        .hero-content {
-            max-width: 900px;
-            z-index: 1;
+        
+        .section-header img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #00ffff;
         }
-
-        .titan-badge {
-            display: inline-block;
-            padding: 10px 30px;
-            background: var(--gradient-1);
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 14px;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            line-height: 1.1;
-            margin-bottom: 30px;
-            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
-        }
-
-        .gradient-text {
-            background: var(--gradient-3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 3s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% {
-                filter: hue-rotate(0deg);
-            }
-            50% {
-                filter: hue-rotate(30deg);
-            }
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            color: var(--text-gray);
-            margin-bottom: 50px;
-            line-height: 1.8;
-            font-weight: 400;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 60px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 18px 40px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 1px;
-        }
-
-        .btn-primary {
-            background: var(--gradient-1);
-            color: var(--text-light);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-light);
-            border: 2px solid var(--primary-color);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        .pulse {
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-            }
-            50% {
-                box-shadow: 0 10px 50px rgba(0, 212, 255, 0.6);
-            }
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .stat-number {
+        
+        .section h2 {
+            color: #00ffff;
             font-size: 2.5rem;
-            font-weight: 900;
-            background: var(--gradient-3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 10px #00ffff;
         }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Section Styling */
-        section {
-            padding: 100px 20px;
-            position: relative;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            text-align: center;
-            margin-bottom: 60px;
-            text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-        }
-
-        /* Mission Section */
-        .mission {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(0, 212, 255, 0.2);
-            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-        }
-
-        .mission-text {
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto 30px;
-            color: var(--text-gray);
-            line-height: 1.8;
-        }
-
-        .mission-text.highlight {
-            color: var(--text-light);
-            font-weight: 600;
-            font-size: clamp(1.2rem, 2.2vw, 1.5rem);
-        }
-
-        /* Benefits Section */
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .benefit-card {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-color);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
-        }
-
-        .benefit-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-        }
-
-        .benefit-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-
-        .benefit-card p {
-            color: var(--text-gray);
-            line-height: 1.8;
+        
+        .section p {
+            color: #c0c0c0;
             font-size: 1.1rem;
-        }
-
-        /* Skills Section */
-        .skills {
-            background: var(--darker-bg);
-        }
-
-        .skills-intro {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            max-width: 800px;
-            margin: 0 auto 60px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .skill-item {
-            background: var(--card-bg);
-            padding: 20px 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 212, 255, 0.1);
-            transition: all 0.3s ease;
-            font-size: 1.05rem;
-            font-weight: 500;
-            backdrop-filter: blur(10px);
-        }
-
-        .skill-item:hover {
-            border-color: var(--primary-color);
-            transform: translateX(5px);
-            background: rgba(0, 212, 255, 0.05);
-        }
-
-        /* Urgency Section */
-        .urgency {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-top: 2px solid var(--secondary-color);
-            border-bottom: 2px solid var(--secondary-color);
-        }
-
-        .urgency-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .urgency-text {
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
-            text-align: center;
-            margin-bottom: 30px;
-            color: var(--text-gray);
             line-height: 1.8;
+            margin-top: 1rem;
         }
-
-        .urgency-text.highlight {
-            color: var(--text-light);
-            font-weight: 700;
-            font-size: clamp(1.3rem, 2.5vw, 1.6rem);
-            background: var(--gradient-2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        
+        .character-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: rgba(26, 31, 58, 0.6);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
         }
-
-        /* Membership Section */
-        .membership {
-            background: var(--darker-bg);
+        
+        .character-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
         }
-
-        .membership-intro {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            max-width: 700px;
-            margin: 0 auto 60px;
+        
+        .character-header img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #ff00ff;
         }
-
-        .membership-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .membership-card {
-            background: var(--card-bg);
-            padding: 50px 40px;
-            border-radius: 20px;
-            border: 2px solid rgba(0, 212, 255, 0.2);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            position: relative;
-        }
-
-        .membership-card.featured {
-            border-color: var(--accent-color);
-            transform: scale(1.05);
-            box-shadow: 0 20px 60px rgba(255, 170, 0, 0.3);
-        }
-
-        .membership-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0, 212, 255, 0.3);
-        }
-
-        .membership-card.featured:hover {
-            transform: scale(1.05) translateY(-10px);
-        }
-
-        .membership-badge {
-            display: inline-block;
-            padding: 8px 20px;
-            background: var(--gradient-1);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-
-        .membership-badge.popular {
-            background: var(--gradient-2);
-        }
-
-        .membership-card h3 {
+        
+        .character-section h2 {
+            color: #ff00ff;
             font-size: 2rem;
-            margin-bottom: 15px;
-            color: var(--primary-color);
+            text-shadow: 0 0 10px #ff00ff;
         }
-
-        .membership-card.featured h3 {
-            color: var(--accent-color);
-        }
-
-        .membership-description {
-            color: var(--text-gray);
-            margin-bottom: 30px;
-            line-height: 1.6;
-            font-size: 1.05rem;
-        }
-
-        .membership-features {
-            list-style: none;
-            margin-bottom: 40px;
-        }
-
-        .membership-features li {
-            padding: 12px 0;
-            color: var(--text-gray);
-            font-size: 1.05rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .btn-membership,
-        .btn-membership-featured {
-            width: 100%;
-            text-align: center;
-            padding: 18px 30px;
+        
+        .character-section p {
+            color: #c0c0c0;
             font-size: 1.1rem;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
+            line-height: 1.8;
+            margin-top: 1rem;
+        }
+        
+        .contact-form {
+            margin-top: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
             display: block;
-            font-family: 'Orbitron', sans-serif;
+            color: #00ffff;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(10, 14, 39, 0.8);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 5px;
+            color: #e0e0e0;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00ffff;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .required {
+            color: #ff00ff;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            color: #0a0e27;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
             letter-spacing: 1px;
         }
-
-        .btn-membership {
-            background: var(--gradient-1);
-            color: var(--text-light);
+        
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
         }
-
-        .btn-membership-featured {
-            background: linear-gradient(135deg, #ffaa00 0%, #ff6600 100%);
-            color: var(--text-light);
-            box-shadow: 0 10px 30px rgba(255, 170, 0, 0.4);
-        }
-
-        .btn-membership:hover,
-        .btn-membership-featured:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
-        }
-
-        /* Contact Section */
-        .contact {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-        }
-
-        .contact-intro {
+        
+        footer {
+            background: rgba(10, 14, 39, 0.95);
+            padding: 2rem;
             text-align: center;
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            max-width: 700px;
-            margin: 0 auto 60px;
+            margin-top: 4rem;
+            border-top: 2px solid #00ffff;
         }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
         }
-
-        .form-group {
-            margin-bottom: 25px;
+        
+        .social-icons a {
+            color: #00ffff;
+            font-size: 2rem;
+            transition: all 0.3s;
         }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 18px 25px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(0, 212, 255, 0.2);
-            border-radius: 15px;
-            color: var(--text-light);
-            font-size: 1.05rem;
-            font-family: 'Rajdhani', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            background: rgba(0, 212, 255, 0.05);
-        }
-
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
-            color: var(--text-gray);
-        }
-
-        .contact-form button {
-            width: 100%;
-        }
-
-        /* Final CTA Section */
-        .final-cta {
-            background: var(--darker-bg);
-            text-align: center;
-        }
-
-        .final-cta-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .final-title {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            margin-bottom: 30px;
-            background: var(--gradient-3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .final-text {
-            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
-            color: var(--text-gray);
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-
-        .final-tagline {
-            font-size: clamp(1.4rem, 3vw, 1.8rem);
-            color: var(--text-light);
-            margin-bottom: 50px;
-        }
-
-        .btn-large {
-            padding: 22px 60px;
-            font-size: 1.3rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--darker-bg);
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 1px solid rgba(0, 212, 255, 0.2);
-        }
-
-        .footer p {
-            color: var(--text-gray);
-            margin-bottom: 10px;
-        }
-
-        .footer-tagline {
-            font-style: italic;
-            color: var(--primary-color);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero {
-                padding: 80px 20px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .hero-stats {
-                gap: 30px;
-            }
-
-            section {
-                padding: 60px 20px;
-            }
-
-            .benefits-grid,
-            .skills-grid,
-            .membership-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .membership-card.featured {
-                transform: scale(1);
-            }
-
-            .membership-card.featured:hover {
-                transform: translateY(-10px);
-            }
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Selection Color */
-        ::selection {
-            background: var(--primary-color);
-            color: var(--dark-bg);
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            50% {
-                transform: translate(50px, -50px);
-            }
+        
+        .social-icons a:hover {
+            color: #ff00ff;
+            transform: scale(1.2);
         }
     </style>
-<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="background-animation">
-        <div class="circuit-line"></div>
-        <div class="circuit-line"></div>
-        <div class="circuit-line"></div>
-        <div class="glow-orb"></div>
-        <div class="glow-orb"></div>
-        <div class="glow-orb"></div>
+    <nav>
+        <ul>
+            <li><a onclick="showPage('home')" class="nav-link active">Home</a></li>
+            <li><a onclick="showPage('about')" class="nav-link">About</a></li>
+            <li><a onclick="showPage('characters')" class="nav-link">Characters</a></li>
+            <li><a onclick="showPage('instructions')" class="nav-link">Instructions</a></li>
+            <li><a onclick="showPage('contact')" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <div class="hero">
+            <h1>AFTER GATE</h1>
+            <p class="tagline">Strategy Space War Game - RTS Combat Across 100+ Planets</p>
+            <p style="font-size: 1.2rem; margin-top: 1rem;">A game you'll get lost in for months!</p>
+        </div>
+        
+        <div class="container">
+            <div class="section">
+                <div class="section-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_HERE_1" alt="Epic Space Battles">
+                    <h2>Epic Space Battles Await</h2>
+                </div>
+                <p>
+                    Welcome to After Gate, the ultimate strategy space war game that will consume your every waking moment! This isn't just another RTS game - it's an immersive experience spanning over 100 planets, each with unique environments, resources, and strategic importance. Command massive fleets, forge alliances, and conquer the galaxy in this real-time strategy masterpiece. With dozens of unique characters and intertwining storylines, every decision you make will shape the fate of entire civilizations. Prepare yourself for a gaming experience that will keep you engaged for months on end!
+                </p>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_HERE_2" alt="Strategic Depth">
+                    <h2>Unparalleled Strategic Depth</h2>
+                </div>
+                <p>
+                    After Gate features a complex web of strategic gameplay that challenges even the most experienced RTS veterans. Manage resources across multiple star systems, develop cutting-edge technologies, and deploy tactical formations that will turn the tide of battle. Each planet offers unique challenges and opportunities - from resource-rich mining colonies to heavily fortified military installations. Build your empire from the ground up, research powerful upgrades, and customize your forces to match your playstyle. The depth of strategy available ensures that no two playthroughs are ever the same!
+                </p>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_HERE_3" alt="Rich Storylines">
+                    <h2>Rich, Interconnected Storylines</h2>
+                </div>
+                <p>
+                    Dive into a narrative experience unlike any other in the RTS genre. After Gate weaves together dozens of character-driven storylines that intersect and diverge based on your choices. Each character brings their own motivations, secrets, and ambitions to the galactic stage. Form alliances with charismatic leaders, face off against ruthless warlords, and uncover ancient mysteries that could change the balance of power forever. The story unfolds dynamically as you play, ensuring that your journey through the After Gate universe is uniquely yours. With branching narratives and meaningful choices, you'll want to replay the game multiple times to experience every possible outcome!
+                </p>
+            </div>
+        </div>
     </div>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="titan-badge">⚡ THE TITAN SOFTWARE GUILD ⚡</div>
-            <h1 class="hero-title">
-                The Titans Are Rising<br>
-                <span class="gradient-text">And You Can Be One</span>
-            </h1>
-            <p class="hero-subtitle">
-                Where beginners, veterans, kids, and even 60-year-olds come together to master the world of software through hands-on projects and AI-powered learning. This is your moment to forge your digital destiny.
-            </p>
-            <div class="cta-buttons">
-                <a href="#join" class="btn btn-primary pulse">Join the Guild Now</a>
-                <a href="#skills" class="btn btn-secondary">Explore Your Powers</a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number">∞</span>
-                    <span class="stat-label">Possibilities</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">AI</span>
-                    <span class="stat-label">Powered</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">All Ages</span>
-                    <span class="stat-label">Welcome</span>
-                </div>
-            </div>
+    
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page">
+        <div class="hero">
+            <h1>ABOUT AFTER GATE</h1>
         </div>
-    </section>
-
-    <!-- Mission Statement -->
-    <section class="mission">
+        
         <div class="container">
-            <h2 class="section-title">The Greatest Time in Human History</h2>
-            <p class="mission-text">
-                Right now, at this very moment, the tools of creation are in your hands. AI has shattered every barrier that once stood between you and building the digital future. Age doesn't matter. Background doesn't matter. What matters is your willingness to rise, to learn, to create.
-            </p>
-            <p class="mission-text highlight">
-                The Titan Software Guild is where ordinary people become extraordinary creators. Where dreams transform into apps, games, websites, and intelligent systems that change lives.
-            </p>
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section class="benefits">
-        <div class="container">
-            <h2 class="section-title">Why Join the <span class="gradient-text">Titan Guild</span></h2>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">🚀</div>
-                    <h3>Future-Proof Skills</h3>
-                    <p>Master technologies that create financial freedom, unlock creativity, and build unshakeable confidence. These aren't just skills—they're superpowers.</p>
+            <div class="section">
+                <div class="section-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_HERE_ABOUT_1" alt="Game Vision">
+                    <h2>Our Vision</h2>
                 </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">🤝</div>
-                    <h3>Community of Innovators</h3>
-                    <p>Join a guild of creators who build together, share victories, and lift each other higher. You're not learning alone—you're rising with Titans.</p>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">⚡</div>
-                    <h3>AI Levels the Playing Field</h3>
-                    <p>Whether you're 12 or 60, AI has made it possible for anyone to create powerful software. The only limit is your imagination.</p>
-                </div>
+                <p>
+                    After Gate was born from a passion to create the most immersive and expansive real-time strategy space war game ever conceived. We envisioned a game where players could truly lose themselves in a vast galactic conflict spanning over 100 unique planets, each with its own strategic significance and visual identity. Our goal is to blend deep strategic gameplay with rich narrative storytelling, creating an experience that keeps players engaged for months. This isn't just a game - it's a living, breathing universe where your decisions have lasting consequences across multiple interconnected storylines. We're building After Gate to be the ultimate RTS experience that combines the tactical depth veterans crave with the epic scope and character-driven narratives that make gaming truly unforgettable.
+                </p>
             </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-        <div class="container">
-            <h2 class="section-title">What You Can Learn with <span class="gradient-text">AI</span></h2>
-            <p class="skills-intro">These are just the beginning. With AI as your co-pilot, you can master any digital skill and bring any vision to life.</p>
             
-            <div class="skills-grid">
-                <div class="skill-item">🎮 Build video games with AI tools</div>
-                <div class="skill-item">📱 Design mobile apps</div>
-                <div class="skill-item">🌐 Create professional websites</div>
-                <div class="skill-item">🎨 Generate 3D characters and animations</div>
-                <div class="skill-item">🤖 Automate business tasks</div>
-                <div class="skill-item">💬 Develop AI chatbots</div>
-                <div class="skill-item">✨ Design user interfaces (UI/UX)</div>
-                <div class="skill-item">🛒 Build eCommerce platforms</div>
-                <div class="skill-item">🎭 Make digital art with AI</div>
-                <div class="skill-item">🎵 Compose AI-generated music</div>
-                <div class="skill-item">📺 Create YouTube automation systems</div>
-                <div class="skill-item">📚 Write novels or screenplays with AI help</div>
-                <div class="skill-item">📊 Build data dashboards</div>
-                <div class="skill-item">🥽 Make augmented reality (AR) apps</div>
-                <div class="skill-item">🌌 Build virtual reality (VR) experiences</div>
-                <div class="skill-item">📲 Automate social media content</div>
-                <div class="skill-item">🎯 Generate logos and brand kits</div>
-                <div class="skill-item">🧠 Make your own AI assistant</div>
-                <div class="skill-item">🔒 Learn cybersecurity basics</div>
-                <div class="skill-item">🛠️ Develop your own software tools</div>
-                <div class="skill-item">🖼️ Create NFT art collections</div>
-                <div class="skill-item">⏰ Build productivity apps</div>
-                <div class="skill-item">🔬 Train custom AI models</div>
-                <div class="skill-item">💻 Code in Python, JavaScript, and more</div>
-                <div class="skill-item">🎬 Build AI video editors</div>
-                <div class="skill-item">📈 Analyze data visually</div>
-                <div class="skill-item">📖 Create educational apps</div>
-                <div class="skill-item">⚙️ Build automation workflows</div>
-                <div class="skill-item">🎞️ Design motion graphics</div>
-                <div class="skill-item">✍️ Write better with AI editors</div>
-                <div class="skill-item">📜 Create interactive storytelling</div>
-                <div class="skill-item">🎲 Build game engines</div>
-                <div class="skill-item">🔊 Design soundscapes and audio AI</div>
-                <div class="skill-item">📋 Automate spreadsheets and business processes</div>
-                <div class="skill-item">👨‍🏫 Create virtual mentors</div>
-                <div class="skill-item">💼 Build coding portfolios</div>
-                <div class="skill-item">📣 Generate marketing campaigns</div>
-                <div class="skill-item">☁️ Develop cloud-based applications</div>
-                <div class="skill-item">🏢 Build AI-powered tools for small businesses</div>
-                <div class="skill-item">🌊 Create immersive web experiences</div>
-                <div class="skill-item">🗣️ Build text-to-speech and voice apps</div>
-                <div class="skill-item">💁 Train chatbots for customer service</div>
-                <div class="skill-item">👁️ Create image recognition systems</div>
-                <div class="skill-item">🏠 Build your personal AI-powered website</div>
-                <div class="skill-item">🎓 Develop online courses</div>
-                <div class="skill-item">🔌 Learn API integration</div>
-                <div class="skill-item">💰 Create financial or trading bots</div>
-                <div class="skill-item">🚀 Build your own AI startup ideas</div>
-                <div class="skill-item">🎯 Learn how to prompt engineer AI models</div>
-                <div class="skill-item">✨ Build anything your imagination allows</div>
+            <div class="section">
+                <div class="section-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_HERE_ABOUT_2" alt="Game Features">
+                    <h2>What Makes After Gate Unique</h2>
+                </div>
+                <p>
+                    After Gate stands apart from other RTS games through its unprecedented scale and depth. With over 100 planets to explore and conquer, dozens of unique characters each with their own storylines, and a dynamic campaign that adapts to your choices, no two playthroughs will ever be the same. The game features advanced AI opponents that learn from your tactics, a deep tech tree with hundreds of upgrades, and a complex diplomacy system that allows for both cooperation and betrayal. Each character in the game has been meticulously crafted with unique abilities, personalities, and motivations that drive the narrative forward. The strategic layer includes resource management, fleet composition, planetary development, and tactical combat that requires real skill and planning to master. This combination of features creates a game that is both accessible to newcomers and endlessly deep for hardcore strategy fans.
+                </p>
             </div>
-        </div>
-    </section>
-
-    <!-- Urgency Section -->
-    <section class="urgency">
-        <div class="container">
-            <div class="urgency-content">
-                <h2 class="section-title">This Is Your Moment</h2>
-                <p class="urgency-text">
-                    We are living through the greatest technological revolution in human history. AI and software creation are rewriting the rules of what's possible. Right now, in this moment, you have access to tools that would have seemed like magic just five years ago.
-                </p>
-                <p class="urgency-text">
-                    But here's the truth: <strong>waiting means being left behind.</strong> While you hesitate, others are building, creating, and claiming their place in the digital future. The gap between those who create technology and those who merely consume it is widening every single day.
-                </p>
-                <p class="urgency-text highlight">
-                    Don't be a spectator in the digital revolution. Be a creator. Be a Titan.
+            
+            <div class="section">
+                <div class="section-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_HERE_ABOUT_3" alt="Development Journey">
+                    <h2>The Journey Ahead</h2>
+                </div>
+                <p>
+                    We're currently in the exciting development phase of After Gate, and we couldn't be more thrilled to share this journey with you. Our team is working tirelessly to bring this massive vision to life, crafting each planet, designing every character, and weaving together the intricate storylines that will make After Gate truly special. We believe in building a community around this game from the ground up, which is why we're reaching out now - to connect with future players, gather feedback, and build excitement for what's to come. The road ahead is long, but we're committed to delivering a game that exceeds expectations and provides hundreds of hours of engaging gameplay. Stay connected with us through our social media channels and website to get exclusive updates, behind-the-scenes content, and be the first to know when beta testing opportunities become available. Together, we'll create something legendary!
                 </p>
             </div>
         </div>
-    </section>
-
-    <!-- Membership Section -->
-    <section class="membership" id="join">
+    </div>
+    
+    <!-- CHARACTERS PAGE -->
+    <div id="characters" class="page">
+        <div class="hero">
+            <h1>CHARACTERS</h1>
+            <p style="font-size: 1.3rem; margin-top: 1rem;">Meet the heroes and villains who will shape the galaxy's destiny</p>
+        </div>
+        
         <div class="container">
-            <h2 class="section-title">Choose Your <span class="gradient-text">Path</span></h2>
-            <p class="membership-intro">Select the membership that fits your journey. Both paths lead to the same destination: mastery.</p>
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_1" alt="Character 1">
+                    <h2>Character Name 1</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 1. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
             
-            <div class="membership-grid">
-                <div class="membership-card">
-                    <div class="membership-badge">Monthly</div>
-                    <h3>Titan Apprentice</h3>
-                    <p class="membership-description">Perfect for those who want to start their journey with flexibility. Learn at your own pace, month by month.</p>
-                    <ul class="membership-features">
-                        <li>✓ Full access to all courses</li>
-                        <li>✓ AI-powered learning tools</li>
-                        <li>✓ Community support</li>
-                        <li>✓ Hands-on projects</li>
-                        <li>✓ Cancel anytime</li>
-                    </ul>
-                    <a href="https://buy.stripe.com/28E00kaRH0404TE4F97AI0b" class="btn-membership">Start Monthly Journey</a>
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_2" alt="Character 2">
+                    <h2>Character Name 2</h2>
                 </div>
-
-                <div class="membership-card featured">
-                    <div class="membership-badge popular">Most Popular</div>
-                    <h3>Titan Master</h3>
-                    <p class="membership-description">For those ready to commit to their transformation. The fastest path to mastery with the best value.</p>
-                    <ul class="membership-features">
-                        <li>✓ Full access to all courses</li>
-                        <li>✓ AI-powered learning tools</li>
-                        <li>✓ Priority community support</li>
-                        <li>✓ Exclusive advanced projects</li>
-                        <li>✓ Best value - save with annual</li>
-                    </ul>
-                    <a href="https://buy.stripe.com/00w5kE8Jz4kgfyi7Rl7AI0c" class="btn-membership-featured">Start Yearly Journey</a>
+                <p>
+                    This is a placeholder description for Character 2. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_3" alt="Character 3">
+                    <h2>Character Name 3</h2>
                 </div>
+                <p>
+                    This is a placeholder description for Character 3. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_4" alt="Character 4">
+                    <h2>Character Name 4</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 4. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_5" alt="Character 5">
+                    <h2>Character Name 5</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 5. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_6" alt="Character 6">
+                    <h2>Character Name 6</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 6. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_7" alt="Character 7">
+                    <h2>Character Name 7</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 7. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_8" alt="Character 8">
+                    <h2>Character Name 8</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 8. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_9" alt="Character 9">
+                    <h2>Character Name 9</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 9. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_10" alt="Character 10">
+                    <h2>Character Name 10</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 10. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_11" alt="Character 11">
+                    <h2>Character Name 11</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 11. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_12" alt="Character 12">
+                    <h2>Character Name 12</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 12. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_13" alt="Character 13">
+                    <h2>Character Name 13</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 13. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_14" alt="Character 14">
+                    <h2>Character Name 14</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 14. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_15" alt="Character 15">
+                    <h2>Character Name 15</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 15. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_16" alt="Character 16">
+                    <h2>Character Name 16</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 16. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_17" alt="Character 17">
+                    <h2>Character Name 17</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 17. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_18" alt="Character 18">
+                    <h2>Character Name 18</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 18. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_19" alt="Character 19">
+                    <h2>Character Name 19</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 19. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_20" alt="Character 20">
+                    <h2>Character Name 20</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 20. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_21" alt="Character 21">
+                    <h2>Character Name 21</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 21. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_22" alt="Character 22">
+                    <h2>Character Name 22</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 22. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_23" alt="Character 23">
+                    <h2>Character Name 23</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 23. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_24" alt="Character 24">
+                    <h2>Character Name 24</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 24. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_25" alt="Character 25">
+                    <h2>Character Name 25</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 25. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_26" alt="Character 26">
+                    <h2>Character Name 26</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 26. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_27" alt="Character 27">
+                    <h2>Character Name 27</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 27. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_28" alt="Character 28">
+                    <h2>Character Name 28</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 28. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_29" alt="Character 29">
+                    <h2>Character Name 29</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 29. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
+            </div>
+            
+            <div class="character-section">
+                <div class="character-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_30" alt="Character 30">
+                    <h2>Character Name 30</h2>
+                </div>
+                <p>
+                    This is a placeholder description for Character 30. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
+                </p>
             </div>
         </div>
-    </section>
-
-    <!-- Contact Form Section -->
-    <section class="contact">
+    </div>
+    
+    <!-- INSTRUCTIONS PAGE -->
+    <div id="instructions" class="page">
+        <div class="hero">
+            <h1>HOW TO PLAY</h1>
+            <p style="font-size: 1.3rem; margin-top: 1rem;">Master the strategies that will lead you to galactic domination</p>
+        </div>
+        
         <div class="container">
-            <h2 class="section-title">Have Questions? <span class="gradient-text">Reach Out</span></h2>
-            <p class="contact-intro">We're here to help you begin your journey. Send us a message and we'll get back to you quickly.</p>
+            <div class="section">
+                <div class="section-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_INSTRUCTIONS_1" alt="Getting Started">
+                    <h2>Getting Started</h2>
+                </div>
+                <p>
+                    Welcome to After Gate! This section will help you understand the basics of the game and get you started on your path to galactic conquest. After Gate is a real-time strategy game where you'll command fleets, manage resources, and engage in tactical combat across over 100 unique planets. Begin by selecting your faction and starting planet, each offering different strategic advantages. You'll need to balance economic development with military expansion while navigating complex diplomatic relationships. The tutorial campaign will introduce you to core mechanics including resource gathering, unit production, technology research, and combat tactics. Pay attention to the unique characteristics of each planet type - from mineral-rich asteroids to heavily populated trade hubs - as understanding these will be crucial to your success. Remember, this is a game designed for deep strategic thinking, so take your time to learn the systems and experiment with different approaches!
+                </p>
+            </div>
             
-            <form action="https://formsubmit.co/titanbusinesspros@gmail.com" method="POST" class="contact-form">
-                <input type="hidden" name="_subject" value="New Contact Form Submission from Titan Business Pros">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://titanbusinesspros.github.io/MooreOklahoma/thankyou.html">
+            <div class="section">
+                <div class="section-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_INSTRUCTIONS_2" alt="Advanced Strategies">
+                    <h2>Advanced Strategies</h2>
+                </div>
+                <p>
+                    Once you've mastered the basics, it's time to dive into the advanced strategies that separate good commanders from legendary ones. After Gate rewards strategic thinking and long-term planning. Learn to optimize your economy by establishing efficient trade routes between your controlled planets. Master the art of fleet composition - knowing when to deploy heavy battleships versus fast interceptors can mean the difference between victory and defeat. Utilize the terrain and planetary features to your advantage during battles. The technology tree is vast and offers multiple paths to victory - whether you focus on military might, economic supremacy, or diplomatic influence. Pay close attention to character abilities and synergies, as the right combination of commanders can provide devastating tactical advantages. Study your opponents' patterns and adapt your strategy accordingly. Remember to balance short-term tactical decisions with long-term strategic goals, and don't neglect espionage and intelligence gathering as tools in your arsenal!
+                </p>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_INSTRUCTIONS_3" alt="Tips and Tricks">
+                    <h2>Pro Tips and Tricks</h2>
+                </div>
+                <p>
+                    Here are some expert tips that will help you dominate the After Gate universe. Always scout ahead before committing to major offensives - knowledge of enemy positions and strength is invaluable. Don't spread your forces too thin across too many planets; it's better to hold fewer planets securely than to lose them all to counterattacks. Invest in defensive structures early to protect your key economic planets. Use characters strategically - their special abilities can turn the tide of battle when used at the right moment. Pay attention to the storyline choices as they can unlock unique units and bonuses. Resource management is key - always maintain reserves for emergency situations. Join alliances when beneficial but be prepared to adapt if political situations change. Practice micro-management in smaller skirmishes to improve your combat effectiveness. Take advantage of planet-specific bonuses and build structures that complement them. Finally, don't be afraid to experiment with unconventional strategies - After Gate rewards creative thinking and bold decision-making!
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page">
+        <div class="hero">
+            <h1>CONTACT US</h1>
+            <p style="font-size: 1.3rem; margin-top: 1rem;">Get in touch with the After Gate team</p>
+        </div>
+        
+        <div class="container">
+            <div class="section">
+                <div class="section-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CONTACT_1" alt="Get In Touch">
+                    <h2>Get In Touch</h2>
+                </div>
+                <p>
+                    We love hearing from our community! Whether you have questions about After Gate, want to share your feedback, or are interested in partnership opportunities, we're here to listen. The After Gate team is committed to building this game with input from passionate strategy gamers like you. Your thoughts, suggestions, and ideas help shape the future of this epic space war experience. Don't hesitate to reach out - we read every message and do our best to respond promptly. This is your chance to be part of something amazing - a Strategy Space War Game that will redefine the RTS genre with over 100 planets, dozens of characters, and storylines that will keep you engaged for months!
+                </p>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CONTACT_2" alt="Join Our Community">
+                    <h2>Join Our Community</h2>
+                </div>
+                <p>
+                    Become part of the growing After Gate community! Connect with us on social media to get exclusive updates, behind-the-scenes content, and early announcements about beta testing opportunities. Our community is filled with passionate strategy gamers, lore enthusiasts, and fellow space war fanatics. Share your ideas, discuss strategies, and be part of the conversation that's shaping this ambitious project. Follow us on all our social channels using the links in the footer below. Join our Discord server to chat directly with other fans and occasionally with members of the development team. The journey to launch is exciting, and we want you to be part of it every step of the way! This isn't just a game - it's the type of real-time strategy experience you'll get lost in for months!
+                </p>
+            </div>
+            
+            <div class="section">
+                <div class="section-header">
+                    <img src="YOUR_GITHUB_IMAGE_LINK_CONTACT_3" alt="Stay Updated">
+                    <h2>Stay Updated on Development</h2>
+                </div>
+                <p>
+                    After Gate is actively in development, and we're making incredible progress on bringing this massive Strategy Space War Game to life! With over 100 planets being designed, dozens of unique characters being created, and complex storylines being woven together, there's always something exciting happening behind the scenes. By staying connected with us, you'll be the first to know about major milestones, gameplay reveals, character announcements, and beta testing opportunities. We're building an RTS game that players will lose themselves in for months, and we want you along for the journey from the very beginning. Subscribe to our newsletter through the contact form below, follow us on social media, and join our community channels to never miss an update!
+                </p>
+            </div>
+            
+            <div class="section">
+                <h2 style="text-align: center; color: #00ffff; text-shadow: 0 0 10px #00ffff; margin-bottom: 2rem;">Contact Form</h2>
                 
-                <div class="form-group">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <input type="tel" name="phone" placeholder="Your Phone" required>
-                </div>
-                <div class="form-group">
-                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Final CTA Section -->
-    <section class="final-cta">
-        <div class="container">
-            <div class="final-cta-content">
-                <h2 class="final-title">Titans Aren't Born—They're Forged</h2>
-                <p class="final-text">
-                    The tools of creation are finally in your hands. Whether you're 12 or 60, your time to build is now. Join The Titan Software Guild—and become a creator of tomorrow.
-                </p>
-                <p class="final-tagline">
-                    <strong>Don't watch the future happen. Build it.</strong>
-                </p>
-                <a href="#join" class="btn btn-primary btn-large pulse">Forge Your Future Now</a>
+                <form class="contact-form" action="https://formsubmit.co/traxispathfinder@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New Contact Form Submission - After Gate">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="text" name="_honey" style="display:none">
+                    
+                    <div class="form-group">
+                        <label for="name">Name <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number (optional)">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message <span class="required">*</span></label>
+                        <textarea id="message" name="message" required placeholder="Tell us what's on your mind..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Titan Business Pros LLC. All rights reserved.</p>
-            <p class="footer-tagline">Building the Digital Future, One Titan at a Time</p>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 After Gate. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+            <a href="#" target="_blank" title="Twitch"><i class="fab fa-twitch"></i></a>
         </div>
     </footer>
-
+    
     <script>
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scroll animation effects
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections for fade-in animation
-        document.addEventListener('DOMContentLoaded', () => {
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(30px)';
-                section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                observer.observe(section);
-            });
-
-            // Animate skill items on scroll
-            const skillItems = document.querySelectorAll('.skill-item');
-            skillItems.forEach((item, index) => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateX(-20px)';
-                item.style.transition = `opacity 0.5s ease ${index * 0.02}s, transform 0.5s ease ${index * 0.02}s`;
-                observer.observe(item);
-            });
-
-            // Animate benefit cards
-            const benefitCards = document.querySelectorAll('.benefit-card');
-            benefitCards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
-                observer.observe(card);
-            });
-
-            // Animate membership cards
-            const membershipCards = document.querySelectorAll('.membership-card');
-            membershipCards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(30px)';
-                card.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
-                observer.observe(card);
-            });
-        });
-
-        // Add parallax effect to hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero-content');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-                hero.style.opacity = 1 - (scrolled / 800);
-            }
-        });
-
-        // Form submission feedback
-        const contactForm = document.querySelector('.contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                const button = contactForm.querySelector('button[type="submit"]');
-                button.textContent = 'Sending...';
-                button.style.opacity = '0.7';
-            });
-        }
-
-        // Add dynamic glow effect to buttons on hover
-        document.querySelectorAll('.btn').forEach(button => {
-            button.addEventListener('mouseenter', function() {
-                this.style.filter = 'brightness(1.2)';
-            });
-            button.addEventListener('mouseleave', function() {
-                this.style.filter = 'brightness(1)';
-            });
-        });
-
-        // Create floating particles effect
-        function createParticles() {
-            const particlesContainer = document.createElement('div');
-            particlesContainer.className = 'particles-container';
-            particlesContainer.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                pointer-events: none;
-                z-index: -1;
-            `;
-            document.body.appendChild(particlesContainer);
-
-            for (let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.cssText = `
-                    position: absolute;
-                    width: 2px;
-                    height: 2px;
-                    background: rgba(0, 212, 255, 0.5);
-                    border-radius: 50%;
-                    left: ${Math.random() * 100}%;
-                    top: ${Math.random() * 100}%;
-                    animation: float ${5 + Math.random() * 10}s ease-in-out infinite;
-                    animation-delay: ${Math.random() * 5}s;
-                `;
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // Initialize particles
-        createParticles();
-
-        // Add hover effect to skill items
-        document.querySelectorAll('.skill-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateX(10px) scale(1.02)';
-            });
-            item.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateX(0) scale(1)';
-            });
-        });
-
-        // Prevent form resubmission on page refresh
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
+        function showPage(pageName) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // Show selected page
+            document.getElementById(pageName).classList.add('active');
+            
+            // Add active class to clicked nav link
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
         }
     </script>
 </body>
-
 </html>
-
-
