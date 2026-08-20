@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>After Gate - Strategy Space War Game</title>
+    <title>Galaxy Warfare - How To Play</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(to bottom, #0a0e27, #1a1f3a);
             color: #e0e0e0;
             line-height: 1.6;
         }
-        
+
         nav {
             background: rgba(10, 14, 39, 0.95);
             padding: 1rem 2rem;
@@ -26,7 +26,7 @@
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0, 255, 255, 0.3);
         }
-        
+
         nav ul {
             list-style: none;
             display: flex;
@@ -34,7 +34,7 @@
             gap: 2rem;
             flex-wrap: wrap;
         }
-        
+
         nav a {
             color: #00ffff;
             text-decoration: none;
@@ -44,50 +44,86 @@
             letter-spacing: 1px;
             cursor: pointer;
         }
-        
+
         nav a:hover {
             color: #ff00ff;
             text-shadow: 0 0 10px #ff00ff;
         }
-        
+
         nav a.active {
             color: #ff00ff;
             text-shadow: 0 0 10px #ff00ff;
         }
-        
+
         .page {
             display: none;
         }
-        
+
         .page.active {
             display: block;
         }
-        
+
         .hero {
             text-align: center;
             padding: 4rem 2rem;
             background: linear-gradient(135deg, #1a1f3a, #2a1f4a);
         }
-        
+
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.2rem;
             color: #00ffff;
             text-shadow: 0 0 20px #00ffff;
             margin-bottom: 1rem;
+            letter-spacing: 2px;
         }
-        
+
         .hero .tagline {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #ff00ff;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
-        
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            color: #0a0e27;
+            padding: 0.9rem 2.2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .btn.secondary {
+            background: transparent;
+            color: #00ffff;
+            border: 2px solid #00ffff;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
-        
+
         .section {
             margin: 3rem 0;
             padding: 2rem;
@@ -95,86 +131,213 @@
             border-radius: 10px;
             border: 1px solid rgba(0, 255, 255, 0.3);
         }
-        
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .section-header img {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-            border: 2px solid #00ffff;
-        }
-        
+
         .section h2 {
             color: #00ffff;
-            font-size: 2.5rem;
+            font-size: 2rem;
             text-shadow: 0 0 10px #00ffff;
+            margin-bottom: 1rem;
         }
-        
-        .section p {
+
+        .section h3 {
+            color: #ff00ff;
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .section p, .section li {
             color: #c0c0c0;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             line-height: 1.8;
-            margin-top: 1rem;
         }
-        
-        .character-section {
-            margin: 2rem 0;
-            padding: 1.5rem;
+
+        .section ul, .section ol {
+            margin: 0.5rem 0 0.5rem 1.5rem;
+        }
+
+        .section strong {
+            color: #e0e0e0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
             background: rgba(26, 31, 58, 0.6);
-            border-radius: 10px;
             border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
         }
-        
-        .character-header {
+
+        .feature-card h3 {
+            color: #00ffff;
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            font-size: 0.98rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        caption {
+            caption-side: top;
+            text-align: left;
+            font-size: 1.1rem;
+            color: #ff00ff;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        th, td {
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        th {
+            color: #00ffff;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid rgba(0, 255, 255, 0.5);
+        }
+
+        td {
+            color: #d0d0d0;
+        }
+
+        tr:hover td {
+            background: rgba(0, 255, 255, 0.06);
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.15rem 0.55rem;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: bold;
+        }
+
+        .badge-yes {
+            background: rgba(0, 255, 100, 0.15);
+            color: #33ff88;
+            border: 1px solid rgba(51, 255, 136, 0.4);
+        }
+
+        .badge-no {
+            background: rgba(255, 255, 255, 0.08);
+            color: #888;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .nation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .nation-card {
+            background: rgba(10, 14, 39, 0.7);
+            border-radius: 10px;
+            padding: 1.25rem 1.4rem;
+            border-top: 4px solid var(--nc, #00ffff);
+        }
+
+        .nation-card h3 {
             display: flex;
             align-items: center;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
+            gap: 0.6rem;
+            margin: 0 0 0.6rem;
+            color: #fff;
+            font-size: 1.25rem;
         }
-        
-        .character-header img {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 10px;
-            border: 2px solid #ff00ff;
+
+        .nation-swatch {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--nc, #00ffff);
+            box-shadow: 0 0 8px var(--nc, #00ffff);
+            flex-shrink: 0;
         }
-        
-        .character-section h2 {
+
+        .nation-card ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .nation-card li {
+            font-size: 0.92rem;
+            color: #bbb;
+            padding: 0.15rem 0;
+        }
+
+        .nation-tag {
+            display: inline-block;
+            font-size: 0.75rem;
             color: #ff00ff;
-            font-size: 2rem;
-            text-shadow: 0 0 10px #ff00ff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
         }
-        
-        .character-section p {
-            color: #c0c0c0;
-            font-size: 1.1rem;
-            line-height: 1.8;
+
+        .enemy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
             margin-top: 1rem;
         }
-        
+
+        .enemy-card {
+            background: rgba(60, 10, 30, 0.35);
+            border: 1px solid rgba(255, 0, 100, 0.35);
+            border-radius: 10px;
+            padding: 1.1rem 1.3rem;
+        }
+
+        .enemy-card h3 {
+            color: #ff4466;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .enemy-card p {
+            font-size: 0.92rem;
+        }
+
         .contact-form {
             margin-top: 2rem;
         }
-        
+
         .form-group {
             margin-bottom: 1.5rem;
         }
-        
+
         .form-group label {
             display: block;
             color: #00ffff;
             margin-bottom: 0.5rem;
             font-size: 1.1rem;
         }
-        
+
         .form-group input,
         .form-group textarea {
             width: 100%;
@@ -186,23 +349,23 @@
             font-size: 1rem;
             transition: border-color 0.3s;
         }
-        
+
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: #00ffff;
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
         }
-        
+
         .form-group textarea {
             min-height: 150px;
             resize: vertical;
         }
-        
+
         .required {
             color: #ff00ff;
         }
-        
+
         .submit-btn {
             background: linear-gradient(135deg, #00ffff, #ff00ff);
             color: #0a0e27;
@@ -216,12 +379,22 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .submit-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
         }
-        
+
+        .keycap {
+            display: inline-block;
+            background: rgba(0, 255, 255, 0.12);
+            border: 1px solid rgba(0, 255, 255, 0.4);
+            border-radius: 4px;
+            padding: 0.05rem 0.5rem;
+            font-family: monospace;
+            color: #00ffff;
+        }
+
         footer {
             background: rgba(10, 14, 39, 0.95);
             padding: 2rem;
@@ -229,569 +402,550 @@
             margin-top: 4rem;
             border-top: 2px solid #00ffff;
         }
-        
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1rem;
+
+        footer p {
+            color: #888;
+            font-size: 0.9rem;
         }
-        
-        .social-icons a {
+
+        footer a {
             color: #00ffff;
-            font-size: 2rem;
-            transition: all 0.3s;
+            text-decoration: none;
         }
-        
-        .social-icons a:hover {
+
+        footer a:hover {
             color: #ff00ff;
-            transform: scale(1.2);
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <nav>
         <ul>
-            <li><a onclick="showPage('home')" class="nav-link active">Home</a></li>
-            <li><a onclick="showPage('about')" class="nav-link">About</a></li>
-            <li><a onclick="showPage('characters')" class="nav-link">Characters</a></li>
-            <li><a onclick="showPage('instructions')" class="nav-link">Instructions</a></li>
-            <li><a onclick="showPage('contact')" class="nav-link">Contact</a></li>
+            <li><a onclick="showPage('home', event)" class="nav-link active">Home</a></li>
+            <li><a onclick="showPage('howto', event)" class="nav-link">How To Play</a></li>
+            <li><a onclick="showPage('units', event)" class="nav-link">Units</a></li>
+            <li><a onclick="showPage('nations', event)" class="nav-link">Nations</a></li>
+            <li><a onclick="showPage('contact', event)" class="nav-link">Contact</a></li>
         </ul>
     </nav>
-    
+
     <!-- HOME PAGE -->
     <div id="home" class="page active">
         <div class="hero">
-            <h1>AFTER GATE</h1>
-            <p class="tagline">Strategy Space War Game - RTS Combat Across 100+ Planets</p>
-            <p style="font-size: 1.2rem; margin-top: 1rem;">A game you'll get lost in for months!</p>
+            <h1>🌌 GALAXY WARFARE 🌌</h1>
+            <p class="tagline">A Real-Time Space Strategy &amp; Conquest Game</p>
+            <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
+                Pick one of 12 rival nations, build up your homeworld, and fight for control of the galaxy -
+                against the other 11 nations, hostile Cyborg outposts, and a swarming alien Zoonester hive.
+            </p>
+            <div class="hero-buttons">
+                <a class="btn" href="https://titanbusinesspros.github.io/The-Universe-Game/" target="_blank">▶ Play Now</a>
+                <a class="btn secondary" onclick="showPage('howto', event)">How To Play</a>
+            </div>
         </div>
-        
+
         <div class="container">
-            <div class="section">
-                <div class="section-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_HERE_1" alt="Epic Space Battles">
-                    <h2>Epic Space Battles Await</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>⚔️ Real-Time Fleet Combat</h3>
+                    <p>
+                        Command aircraft, naval warships, and ground forces at once. Drag-select your fleet,
+                        click an enemy to send them in and attack-move there automatically, or click open
+                        space to reposition. Every unit has its own HP, attack power, range, and speed.
+                    </p>
                 </div>
-                <p>
-                    Welcome to After Gate, the ultimate strategy space war game that will consume your every waking moment! This isn't just another RTS game - it's an immersive experience spanning over 100 planets, each with unique environments, resources, and strategic importance. Command massive fleets, forge alliances, and conquer the galaxy in this real-time strategy masterpiece. With dozens of unique characters and intertwining storylines, every decision you make will shape the fate of entire civilizations. Prepare yourself for a gaming experience that will keep you engaged for months on end!
-                </p>
-            </div>
-            
-            <div class="section">
-                <div class="section-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_HERE_2" alt="Strategic Depth">
-                    <h2>Unparalleled Strategic Depth</h2>
+                <div class="feature-card">
+                    <h3>🌍 12 Playable Nations</h3>
+                    <p>
+                        USA, China, Russia, UK, France, Japan, Germany, India, Brazil, Australia, Canada,
+                        and Italy each start with their own homeworld and a unique set of combat bonuses -
+                        see the Nations tab for the full breakdown.
+                    </p>
                 </div>
-                <p>
-                    After Gate features a complex web of strategic gameplay that challenges even the most experienced RTS veterans. Manage resources across multiple star systems, develop cutting-edge technologies, and deploy tactical formations that will turn the tide of battle. Each planet offers unique challenges and opportunities - from resource-rich mining colonies to heavily fortified military installations. Build your empire from the ground up, research powerful upgrades, and customize your forces to match your playstyle. The depth of strategy available ensures that no two playthroughs are ever the same!
-                </p>
-            </div>
-            
-            <div class="section">
-                <div class="section-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_HERE_3" alt="Rich Storylines">
-                    <h2>Rich, Interconnected Storylines</h2>
+                <div class="feature-card">
+                    <h3>👽 Alien &amp; Cyborg Threats</h3>
+                    <p>
+                        The galaxy isn't just 12 nations fighting each other. Cyborg strongholds, a
+                        Zoonester alien hive, and rival-controlled outposts add hostile territory you'll
+                        have to fight through or around.
+                    </p>
                 </div>
-                <p>
-                    Dive into a narrative experience unlike any other in the RTS genre. After Gate weaves together dozens of character-driven storylines that intersect and diverge based on your choices. Each character brings their own motivations, secrets, and ambitions to the galactic stage. Form alliances with charismatic leaders, face off against ruthless warlords, and uncover ancient mysteries that could change the balance of power forever. The story unfolds dynamically as you play, ensuring that your journey through the After Gate universe is uniquely yours. With branching narratives and meaningful choices, you'll want to replay the game multiple times to experience every possible outcome!
-                </p>
+                <div class="feature-card">
+                    <h3>🎖️ Campaign Mode</h3>
+                    <p>
+                        Pick one nation and fight through 12 escalating stages against every other rival in
+                        sequence, with alien and Cyborg objectives mixed in along the way and a final
+                        stage that's aliens only. Progress autosaves so you can pick up where you left off.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3>🗺️ Minimap &amp; Full Map Control</h3>
+                    <p>
+                        A live minimap shows your units and the surrounding galaxy at a glance - drag-select
+                        or click on it to command your fleet without hunting around the main view.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3>💾 Autosave</h3>
+                    <p>
+                        Standard games and campaign runs both autosave as you play, so a closed tab or a
+                        multi-hour session never costs you progress.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-    
-    <!-- ABOUT PAGE -->
-    <div id="about" class="page">
-        <div class="hero">
-            <h1>ABOUT AFTER GATE</h1>
-        </div>
-        
-        <div class="container">
-            <div class="section">
-                <div class="section-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_HERE_ABOUT_1" alt="Game Vision">
-                    <h2>Our Vision</h2>
-                </div>
-                <p>
-                    After Gate was born from a passion to create the most immersive and expansive real-time strategy space war game ever conceived. We envisioned a game where players could truly lose themselves in a vast galactic conflict spanning over 100 unique planets, each with its own strategic significance and visual identity. Our goal is to blend deep strategic gameplay with rich narrative storytelling, creating an experience that keeps players engaged for months. This isn't just a game - it's a living, breathing universe where your decisions have lasting consequences across multiple interconnected storylines. We're building After Gate to be the ultimate RTS experience that combines the tactical depth veterans crave with the epic scope and character-driven narratives that make gaming truly unforgettable.
-                </p>
-            </div>
-            
-            <div class="section">
-                <div class="section-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_HERE_ABOUT_2" alt="Game Features">
-                    <h2>What Makes After Gate Unique</h2>
-                </div>
-                <p>
-                    After Gate stands apart from other RTS games through its unprecedented scale and depth. With over 100 planets to explore and conquer, dozens of unique characters each with their own storylines, and a dynamic campaign that adapts to your choices, no two playthroughs will ever be the same. The game features advanced AI opponents that learn from your tactics, a deep tech tree with hundreds of upgrades, and a complex diplomacy system that allows for both cooperation and betrayal. Each character in the game has been meticulously crafted with unique abilities, personalities, and motivations that drive the narrative forward. The strategic layer includes resource management, fleet composition, planetary development, and tactical combat that requires real skill and planning to master. This combination of features creates a game that is both accessible to newcomers and endlessly deep for hardcore strategy fans.
-                </p>
-            </div>
-            
-            <div class="section">
-                <div class="section-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_HERE_ABOUT_3" alt="Development Journey">
-                    <h2>The Journey Ahead</h2>
-                </div>
-                <p>
-                    We're currently in the exciting development phase of After Gate, and we couldn't be more thrilled to share this journey with you. Our team is working tirelessly to bring this massive vision to life, crafting each planet, designing every character, and weaving together the intricate storylines that will make After Gate truly special. We believe in building a community around this game from the ground up, which is why we're reaching out now - to connect with future players, gather feedback, and build excitement for what's to come. The road ahead is long, but we're committed to delivering a game that exceeds expectations and provides hundreds of hours of engaging gameplay. Stay connected with us through our social media channels and website to get exclusive updates, behind-the-scenes content, and be the first to know when beta testing opportunities become available. Together, we'll create something legendary!
-                </p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- CHARACTERS PAGE -->
-    <div id="characters" class="page">
-        <div class="hero">
-            <h1>CHARACTERS</h1>
-            <p style="font-size: 1.3rem; margin-top: 1rem;">Meet the heroes and villains who will shape the galaxy's destiny</p>
-        </div>
-        
-        <div class="container">
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_1" alt="Character 1">
-                    <h2>Character Name 1</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 1. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_2" alt="Character 2">
-                    <h2>Character Name 2</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 2. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_3" alt="Character 3">
-                    <h2>Character Name 3</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 3. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_4" alt="Character 4">
-                    <h2>Character Name 4</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 4. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_5" alt="Character 5">
-                    <h2>Character Name 5</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 5. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_6" alt="Character 6">
-                    <h2>Character Name 6</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 6. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_7" alt="Character 7">
-                    <h2>Character Name 7</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 7. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_8" alt="Character 8">
-                    <h2>Character Name 8</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 8. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_9" alt="Character 9">
-                    <h2>Character Name 9</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 9. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_10" alt="Character 10">
-                    <h2>Character Name 10</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 10. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_11" alt="Character 11">
-                    <h2>Character Name 11</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 11. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_12" alt="Character 12">
-                    <h2>Character Name 12</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 12. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_13" alt="Character 13">
-                    <h2>Character Name 13</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 13. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_14" alt="Character 14">
-                    <h2>Character Name 14</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 14. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_15" alt="Character 15">
-                    <h2>Character Name 15</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 15. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_16" alt="Character 16">
-                    <h2>Character Name 16</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 16. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_17" alt="Character 17">
-                    <h2>Character Name 17</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 17. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_18" alt="Character 18">
-                    <h2>Character Name 18</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 18. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_19" alt="Character 19">
-                    <h2>Character Name 19</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 19. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_20" alt="Character 20">
-                    <h2>Character Name 20</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 20. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_21" alt="Character 21">
-                    <h2>Character Name 21</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 21. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_22" alt="Character 22">
-                    <h2>Character Name 22</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 22. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_23" alt="Character 23">
-                    <h2>Character Name 23</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 23. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_24" alt="Character 24">
-                    <h2>Character Name 24</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 24. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_25" alt="Character 25">
-                    <h2>Character Name 25</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 25. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_26" alt="Character 26">
-                    <h2>Character Name 26</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 26. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_27" alt="Character 27">
-                    <h2>Character Name 27</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 27. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_28" alt="Character 28">
-                    <h2>Character Name 28</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 28. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_29" alt="Character 29">
-                    <h2>Character Name 29</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 29. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-            
-            <div class="character-section">
-                <div class="character-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CHARACTER_30" alt="Character 30">
-                    <h2>Character Name 30</h2>
-                </div>
-                <p>
-                    This is a placeholder description for Character 30. This character will have a rich backstory, unique abilities, and play a crucial role in the After Gate storyline. Their motivations and actions will shape the course of the galactic war and influence the player's strategic decisions throughout the campaign.
-                </p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- INSTRUCTIONS PAGE -->
-    <div id="instructions" class="page">
+
+    <!-- HOW TO PLAY PAGE -->
+    <div id="howto" class="page">
         <div class="hero">
             <h1>HOW TO PLAY</h1>
-            <p style="font-size: 1.3rem; margin-top: 1rem;">Master the strategies that will lead you to galactic domination</p>
+            <p style="font-size: 1.2rem; margin-top: 1rem;">Everything you need to command your fleet and take the galaxy</p>
         </div>
-        
+
         <div class="container">
             <div class="section">
-                <div class="section-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_INSTRUCTIONS_1" alt="Getting Started">
-                    <h2>Getting Started</h2>
-                </div>
+                <h2>Getting Started</h2>
                 <p>
-                    Welcome to After Gate! This section will help you understand the basics of the game and get you started on your path to galactic conquest. After Gate is a real-time strategy game where you'll command fleets, manage resources, and engage in tactical combat across over 100 unique planets. Begin by selecting your faction and starting planet, each offering different strategic advantages. You'll need to balance economic development with military expansion while navigating complex diplomatic relationships. The tutorial campaign will introduce you to core mechanics including resource gathering, unit production, technology research, and combat tactics. Pay attention to the unique characteristics of each planet type - from mineral-rich asteroids to heavily populated trade hubs - as understanding these will be crucial to your success. Remember, this is a game designed for deep strategic thinking, so take your time to learn the systems and experiment with different approaches!
+                    From the start screen, choose <strong>Standard Game</strong> to play free-for-all against
+                    every other planet in the galaxy, or <strong>Campaign Mode</strong> to pick one nation and
+                    fight the other 11 in a scripted, escalating story. Either way, you'll pick a
+                    difficulty (<strong>Easy</strong>, <strong>Normal</strong>, or <strong>Hard</strong>, which
+                    scales how often and how aggressively the AI builds, moves, and attacks) and a nation to
+                    play as. You start with a homeworld, a starting garrison, and a trickle of resources -
+                    everything else is built from there.
                 </p>
             </div>
-            
+
             <div class="section">
-                <div class="section-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_INSTRUCTIONS_2" alt="Advanced Strategies">
-                    <h2>Advanced Strategies</h2>
-                </div>
+                <h2>Controls</h2>
+                <h3>Selecting units</h3>
+                <ul>
+                    <li>Click-and-drag a box over your units (a normal left-click drag) to select all of them.</li>
+                    <li>Click a single unit's entry in the sidebar unit list to select just that one.</li>
+                    <li>You can also drag-select directly on the minimap.</li>
+                </ul>
+                <h3>Moving and attacking</h3>
+                <ul>
+                    <li>With units selected, click empty space to send them there.</li>
+                    <li>With units selected, click an enemy ship, ground unit, or building to attack it. If
+                        it's already in range they fire immediately; if it's farther away, your units will
+                        automatically travel there first (an <strong>attack-move</strong> order) and open
+                        fire the moment they're in range - no need to move manually and then attack again.</li>
+                    <li>An attack-move order keeps re-engaging the same target every turn until it's
+                        destroyed, unless you give the unit a new move or attack order.</li>
+                    <li>The MOVE and ATTACK buttons in the sidebar arm the same behavior explicitly if you'd
+                        rather choose the mode yourself before clicking.</li>
+                    <li>Right-click and drag to pan the camera. A right-click with no drag deselects your
+                        current selection.</li>
+                </ul>
+                <h3>Minimap</h3>
+                <ul>
+                    <li>Shows your units (green dots, yellow when selected) and the surrounding galaxy.</li>
+                    <li>Drag-select on the minimap to select units, then click elsewhere on it to send them
+                        there - useful for issuing orders across the map without scrolling.</li>
+                </ul>
+                <h3>Camera</h3>
+                <ul>
+                    <li><span class="keycap">🏠 HOME</span> recenters the camera on your homeworld.</li>
+                    <li><span class="keycap">🗺️ VIEW ALL</span> zooms out to see the whole battle.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Economy &amp; Buildings</h2>
                 <p>
-                    Once you've mastered the basics, it's time to dive into the advanced strategies that separate good commanders from legendary ones. After Gate rewards strategic thinking and long-term planning. Learn to optimize your economy by establishing efficient trade routes between your controlled planets. Master the art of fleet composition - knowing when to deploy heavy battleships versus fast interceptors can mean the difference between victory and defeat. Utilize the terrain and planetary features to your advantage during battles. The technology tree is vast and offers multiple paths to victory - whether you focus on military might, economic supremacy, or diplomatic influence. Pay close attention to character abilities and synergies, as the right combination of commanders can provide devastating tactical advantages. Study your opponents' patterns and adapt your strategy accordingly. Remember to balance short-term tactical decisions with long-term strategic goals, and don't neglect espionage and intelligence gathering as tools in your arsenal!
+                    Every playable homeworld has 6 buildings: two nation-flavored structures, a
+                    <strong>Harbor</strong>, a <strong>Marine Base</strong>, a <strong>War Factory</strong>,
+                    and a <strong>Defense Gun</strong>. Buildings have 5 HP each (20 HP for the Defense Gun,
+                    which also auto-fires at any enemy unit that wanders within 500 range - 15 damage per
+                    shot). Resources accumulate automatically over time and are spent building new units from
+                    the sidebar's build menu. Losing all of your buildings ends the game, so keep some
+                    defenders home even while you're on the offensive.
                 </p>
             </div>
-            
+
             <div class="section">
-                <div class="section-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_INSTRUCTIONS_3" alt="Tips and Tricks">
-                    <h2>Pro Tips and Tricks</h2>
-                </div>
+                <h2>Ground Invasion: the Harbor System</h2>
                 <p>
-                    Here are some expert tips that will help you dominate the After Gate universe. Always scout ahead before committing to major offensives - knowledge of enemy positions and strength is invaluable. Don't spread your forces too thin across too many planets; it's better to hold fewer planets securely than to lose them all to counterattacks. Invest in defensive structures early to protect your key economic planets. Use characters strategically - their special abilities can turn the tide of battle when used at the right moment. Pay attention to the storyline choices as they can unlock unique units and bonuses. Resource management is key - always maintain reserves for emergency situations. Join alliances when beneficial but be prepared to adapt if political situations change. Practice micro-management in smaller skirmishes to improve your combat effectiveness. Take advantage of planet-specific bonuses and build structures that complement them. Finally, don't be afraid to experiment with unconventional strategies - After Gate rewards creative thinking and bold decision-making!
+                    Ground units (<strong>Groundpounders</strong>, <strong>Ironbeast</strong>,
+                    <strong>Boomcannon</strong>) can't fly or sail - they're bound to whatever planet they're
+                    standing on. To invade another planet, build a <strong>Cargohauler</strong> (it carries up
+                    to 10 ground troops), sail it near your harbor or your deployed troops to load them, sail
+                    it to an enemy planet, and unload them onto the beach to begin the ground assault.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>Combat Rules</h2>
+                <ul>
+                    <li>Every unit can attack once per turn - after firing, it's locked in place until the
+                        next turn resets it.</li>
+                    <li>Range, HP, and attack power vary a lot by unit type - check the Units tab before you
+                        commit a fleet.</li>
+                    <li>Some fighters (Thunderwing, Shadowglider) can't target certain fast interceptors
+                        (Blazefalcon, Skyripper, Vortexhawk, Phantom Strike, Razorwing) - pair your fleet
+                        with something that can.</li>
+                    <li>Ground units can only fight other ground units.</li>
+                    <li><strong>Frostwing</strong> attacks freeze the target in place for 2 turns instead of
+                        dealing heavy damage.</li>
+                    <li><strong>Phantom Strike</strong> can fire a slow, shootable long-range missile (25
+                        damage, 2000 range) once its cooldown is up, or fall back to its regular gun (50
+                        damage) - you'll be asked to choose when both are available.</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Campaign Mode</h2>
+                <p>
+                    Pick one of the 12 nations and fight through <strong>12 stages</strong>, one per rival
+                    nation, in sequence - later stages add more planets (some stages have as many as 7
+                    objective planets), enemy-garrisoned outposts, and Cyborg alien bases you have to clear
+                    along the way. Each stage lists its objectives up front (visible in the collapsible
+                    Objectives panel during play) - typically something like "take out their outpost, destroy
+                    the alien base on the way in, then take their homeworld." The final stage is an
+                    all-aliens gauntlet. Progress autosaves after every stage clear, so you can close the game
+                    and resume later from the start screen. Losing a stage offers a <strong>Retry Stage</strong>
+                    instead of restarting the whole campaign.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>Difficulty &amp; Saving</h2>
+                <p>
+                    <strong>Easy / Normal / Hard</strong> scale how often the AI builds, moves, and attacks,
+                    and how aggressive the special enemy factions (Cyborg, Zoonester, Roufestreal) are on top
+                    of their own baseline. Both standard games and campaign runs autosave as you play; a
+                    manual Save/Load to file is also available from the in-game menu if you want to keep more
+                    than one game going.
                 </p>
             </div>
         </div>
     </div>
-    
+
+    <!-- UNITS PAGE -->
+    <div id="units" class="page">
+        <div class="hero">
+            <h1>UNITS</h1>
+            <p style="font-size: 1.2rem; margin-top: 1rem;">Every unit type you can build, with real stats</p>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <p>
+                    Costs are in resources. <strong>Range</strong> and <strong>Attack Power</strong> are base
+                    values - your nation's bonuses (see the Nations tab) can push some of these higher for
+                    specific unit types. Ground units are also filtered by the Harbor system above: they must
+                    be ferried by Cargohauler to reach another planet.
+                </p>
+
+                <div class="table-wrap">
+                    <table>
+                        <caption>✈️ Air Units</caption>
+                        <thead>
+                            <tr><th>Unit</th><th>Cost</th><th>HP</th><th>Attack</th><th>Range</th><th>Speed</th><th>Hits Buildings?</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Radar Drone</td><td>30</td><td>50</td><td>0 (scout)</td><td>200</td><td>2.8</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td>Blazefalcon</td><td>40</td><td>60</td><td>30</td><td>120</td><td>3.5</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td>Thunderwing</td><td>60</td><td>80</td><td>40</td><td>180</td><td>2.5</td><td><span class="badge badge-yes">Yes</span></td></tr>
+                            <tr><td>Skyripper</td><td>70</td><td>70</td><td>35</td><td>140</td><td>4.0</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td>Vortexhawk</td><td>90</td><td>85</td><td>40</td><td>150</td><td>3.8</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td>Razorwing</td><td>80</td><td>75</td><td>45</td><td>200</td><td>3.3</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td>Shadowglider</td><td>200</td><td>120</td><td>70</td><td>220</td><td>2.0</td><td><span class="badge badge-yes">Yes</span></td></tr>
+                            <tr><td>Stormbreaker Bomber</td><td>180</td><td>150</td><td>90</td><td>250</td><td>1.8</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td>Frostwing</td><td>220</td><td>180</td><td>85 (freezes target 2 turns)</td><td>200</td><td>2.2</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td>Phantom Strike</td><td>150</td><td>100</td><td>50 gun / 25 missile</td><td>2000 (missile)</td><td>4.5</td><td><span class="badge badge-yes">Yes</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-wrap" style="margin-top: 2.5rem;">
+                    <table>
+                        <caption>🚢 Naval Units</caption>
+                        <thead>
+                            <tr><th>Unit</th><th>Cost</th><th>HP</th><th>Attack</th><th>Range</th><th>Speed</th><th>Hits Buildings?</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Deepglider</td><td>50</td><td>100</td><td>35</td><td>100</td><td>1.8</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td>Stormbreaker</td><td>100</td><td>150</td><td>45</td><td>140</td><td>2.0</td><td><span class="badge badge-yes">Yes</span></td></tr>
+                            <tr><td>Wavecrusher</td><td>150</td><td>200</td><td>55</td><td>160</td><td>1.7</td><td><span class="badge badge-yes">Yes</span></td></tr>
+                            <tr><td>Skyfortress</td><td>250</td><td>300</td><td>25</td><td>100</td><td>1.3</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td>Tidebreaker</td><td>200</td><td>250</td><td>70</td><td>140</td><td>1.4</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td>Whisperwind</td><td>160</td><td>180</td><td>40</td><td>180</td><td>2.5</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td>Cargohauler</td><td>120</td><td>120</td><td>0 (transport, holds 10 troops)</td><td>-</td><td>1.2</td><td><span class="badge badge-no">No</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-wrap" style="margin-top: 2.5rem;">
+                    <table>
+                        <caption>🛡️ Ground Units <span style="color:#888; font-weight:normal; font-size:0.85rem;">(deploy from Harbor, transported by Cargohauler)</span></caption>
+                        <thead>
+                            <tr><th>Unit</th><th>Cost</th><th>HP</th><th>Attack</th><th>Range</th><th>Speed</th><th>Hits Buildings?</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Groundpounders</td><td>20</td><td>40</td><td>15</td><td>60</td><td>1.0</td><td><span class="badge badge-yes">Yes</span></td></tr>
+                            <tr><td>Ironbeast</td><td>80</td><td>100</td><td>45</td><td>90</td><td>1.5</td><td><span class="badge badge-yes">Yes</span></td></tr>
+                            <tr><td>Boomcannon</td><td>100</td><td>70</td><td>60</td><td>180</td><td>0.8</td><td><span class="badge badge-no">No</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section" style="background: rgba(60, 10, 30, 0.25); border-color: rgba(255, 0, 100, 0.3); margin-top: 2.5rem;">
+                    <h2 style="color: #ff4466; text-shadow: 0 0 10px #ff4466;">Hostile-Only Units</h2>
+                    <p>These don't appear in your build menu - you'll only ever face them as enemies.</p>
+                    <div class="enemy-grid">
+                        <div class="enemy-card">
+                            <h3>Cyborg Dreadnought</h3>
+                            <p>300 HP, 210 attack, 500 range. The heavy backbone of Cyborg strongholds - approach in force.</p>
+                        </div>
+                        <div class="enemy-card">
+                            <h3>Zoon Parasite</h3>
+                            <p>200 HP, 500 range, doesn't fire a normal gun but is extremely fast (speed 5.0) and swarms aggressively.</p>
+                        </div>
+                        <div class="enemy-card">
+                            <h3>Roufestreal</h3>
+                            <p>100 HP, lays space mines that detonate on anything that strays too close instead of attacking directly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NATIONS PAGE -->
+    <div id="nations" class="page">
+        <div class="hero">
+            <h1>NATIONS</h1>
+            <p style="font-size: 1.2rem; margin-top: 1rem;">Every playable nation's combat bonuses</p>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <p>
+                    Every nation starts with the same buildings and can build the same units - what sets them
+                    apart is a set of standing bonuses to specific unit types (HP, attack power, speed, or
+                    range). Pick the nation whose bonuses match how you want to play.
+                </p>
+
+                <div class="nation-grid">
+                    <div class="nation-card" style="--nc:#ff0000">
+                        <h3><span class="nation-swatch"></span>USA</h3>
+                        <span class="nation-tag">Heavy Naval Defense</span>
+                        <ul>
+                            <li>+30% Skyfortress HP</li>
+                            <li>+20% Stormbreaker HP</li>
+                            <li>+20% Wavecrusher HP</li>
+                            <li>+10% Skyfortress Attack</li>
+                            <li>+20% Stormbreaker Attack</li>
+                            <li>+20% Stormbreaker Range</li>
+                        </ul>
+                    </div>
+                    <div class="nation-card" style="--nc:#ffff00">
+                        <h3><span class="nation-swatch"></span>China</h3>
+                        <span class="nation-tag">Fast Air Interceptors</span>
+                        <ul>
+                            <li>+20% Blazefalcon HP</li>
+                            <li>+10% Blazefalcon Attack</li>
+                            <li>+10% Thunderwing Attack</li>
+                            <li>+50% Blazefalcon Speed</li>
+                            <li>+30% Thunderwing Speed</li>
+                        </ul>
+                    </div>
+                    <div class="nation-card" style="--nc:#ff00ff">
+                        <h3><span class="nation-swatch"></span>Russia</h3>
+                        <span class="nation-tag">Heavy Ground Armor</span>
+                        <ul>
+                            <li>+40% Ironbeast HP</li>
+                            <li>+30% Boomcannon HP</li>
+                            <li>+20% Groundpounders HP</li>
+                            <li>+30% Ironbeast Attack</li>
+                            <li>+40% Boomcannon Attack</li>
+                            <li>-10% Ironbeast Speed</li>
+                            <li>+30% Boomcannon Range</li>
+                        </ul>
+                    </div>
+                    <div class="nation-card" style="--nc:#00ff00">
+                        <h3><span class="nation-swatch"></span>UK</h3>
+                        <span class="nation-tag">Balanced Naval Strike</span>
+                        <ul>
+                            <li>+20% Stormbreaker HP</li>
+                            <li>+20% Deepglider HP</li>
+                            <li>+20% Stormbreaker Attack</li>
+                            <li>+10% Deepglider Attack</li>
+                            <li>+10% Stormbreaker Speed</li>
+                        </ul>
+                    </div>
+                    <div class="nation-card" style="--nc:#00ffff">
+                        <h3><span class="nation-swatch"></span>France</h3>
+                        <span class="nation-tag">Elite Air Striker</span>
+                        <ul>
+                            <li>+30% Thunderwing HP</li>
+                            <li>+20% Skyfortress HP</li>
+                            <li>+40% Thunderwing Attack</li>
+                            <li>+20% Thunderwing Range</li>
+                        </ul>
+                    </div>
+                    <div class="nation-card" style="--nc:#ff8800">
+                        <h3><span class="nation-swatch"></span>Japan</h3>
+                        <span class="nation-tag">Fast Naval Skirmisher</span>
+                        <ul>
+                            <li>+20% Skyfortress HP</li>
+                            <li>+10% Deepglider HP</li>
+                            <li>+30% Deepglider Attack</li>
+                            <li>+40% Deepglider Speed</li>
+                            <li>+20% Skyfortress Speed</li>
+                        </ul>
+                    </div>
+                    <div class="nation-card" style="--nc:#8800ff">
+                        <h3><span class="nation-swatch"></span>Germany</h3>
+                        <span class="nation-tag">Ground &amp; Naval Powerhouse</span>
+                        <ul>
+                            <li>+40% Ironbeast HP</li>
+                            <li>+30% Deepglider HP</li>
+                            <li>+30% Ironbeast Attack</li>
+                            <li>+40% Deepglider Attack</li>
+                            <li>+20% Deepglider Range</li>
+                        </ul>
+                    </div>
+                    <div class="nation-card" style="--nc:#00ff88">
+                        <h3><span class="nation-swatch"></span>India</h3>
+                        <span class="nation-tag">Ground Assault Specialist</span>
+                        <ul>
+                            <li>+10% Groundpounders HP</li>
+                            <li>+20% Groundpounders Attack</li>
+                            <li>+20% Boomcannon Attack</li>
+                            <li>+20% Groundpounders Speed</li>
+                        </ul>
+                    </div>
+                    <div class="nation-card" style="--nc:#ff0088">
+                        <h3><span class="nation-swatch"></span>Brazil</h3>
+                        <span class="nation-tag">Generalist</span>
+                        <ul>
+                            <li>+10% Stormbreaker HP</li>
+                            <li>+10% Blazefalcon HP</li>
+                            <li>+10% Groundpounders HP</li>
+                        </ul>
+                    </div>
+                    <div class="nation-card" style="--nc:#88ff00">
+                        <h3><span class="nation-swatch"></span>Australia</h3>
+                        <span class="nation-tag">Naval Bombardment</span>
+                        <ul>
+                            <li>+30% Wavecrusher HP</li>
+                            <li>+20% Stormbreaker HP</li>
+                            <li>+20% Groundpounders HP</li>
+                            <li>+10% Wavecrusher Attack</li>
+                            <li>+20% Wavecrusher Range</li>
+                        </ul>
+                    </div>
+                    <div class="nation-card" style="--nc:#0088ff">
+                        <h3><span class="nation-swatch"></span>Canada</h3>
+                        <span class="nation-tag">Durable Ground Force</span>
+                        <ul>
+                            <li>+30% Groundpounders HP</li>
+                            <li>+20% Ironbeast HP</li>
+                            <li>+10% Groundpounders Attack</li>
+                            <li>+20% Boomcannon Attack</li>
+                            <li>+10% Groundpounders Speed</li>
+                        </ul>
+                    </div>
+                    <div class="nation-card" style="--nc:#ff8888">
+                        <h3><span class="nation-swatch"></span>Italy</h3>
+                        <span class="nation-tag">Fast Naval Striker</span>
+                        <ul>
+                            <li>+20% Wavecrusher HP</li>
+                            <li>+10% Thunderwing HP</li>
+                            <li>+20% Wavecrusher Attack</li>
+                            <li>+30% Wavecrusher Speed</li>
+                            <li>+20% Blazefalcon Speed</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section" style="background: rgba(60, 10, 30, 0.25); border-color: rgba(255, 0, 100, 0.3);">
+                <h2 style="color: #ff4466; text-shadow: 0 0 10px #ff4466;">Beyond the 12 Nations</h2>
+                <p>The galaxy also holds hostile territory that isn't playable but that you'll have to fight:</p>
+                <div class="enemy-grid">
+                    <div class="enemy-card">
+                        <h3>🦾 Cyborg Strongholds</h3>
+                        <p>Four fortified Cyborg planets that build and defend with Cyborg Dreadnoughts.</p>
+                    </div>
+                    <div class="enemy-card">
+                        <h3>👽 Zoonester Hive</h3>
+                        <p>An alien homeworld that swarms with fast, aggressive Zoon Parasites.</p>
+                    </div>
+                    <div class="enemy-card">
+                        <h3>💣 Roufestreal Command</h3>
+                        <p>A minelayer stronghold that seeds space with hidden mines instead of fighting head-on.</p>
+                    </div>
+                    <div class="enemy-card">
+                        <h3>🏴 Rival Outposts</h3>
+                        <p>Garrisoned satellite planets belonging to a rival nation - clear them out on the way to that nation's homeworld.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- CONTACT PAGE -->
     <div id="contact" class="page">
         <div class="hero">
             <h1>CONTACT US</h1>
-            <p style="font-size: 1.3rem; margin-top: 1rem;">Get in touch with the After Gate team</p>
+            <p style="font-size: 1.2rem; margin-top: 1rem;">Questions, bug reports, or feedback on Galaxy Warfare</p>
         </div>
-        
+
         <div class="container">
             <div class="section">
-                <div class="section-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CONTACT_1" alt="Get In Touch">
-                    <h2>Get In Touch</h2>
-                </div>
-                <p>
-                    We love hearing from our community! Whether you have questions about After Gate, want to share your feedback, or are interested in partnership opportunities, we're here to listen. The After Gate team is committed to building this game with input from passionate strategy gamers like you. Your thoughts, suggestions, and ideas help shape the future of this epic space war experience. Don't hesitate to reach out - we read every message and do our best to respond promptly. This is your chance to be part of something amazing - a Strategy Space War Game that will redefine the RTS genre with over 100 planets, dozens of characters, and storylines that will keep you engaged for months!
-                </p>
-            </div>
-            
-            <div class="section">
-                <div class="section-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CONTACT_2" alt="Join Our Community">
-                    <h2>Join Our Community</h2>
-                </div>
-                <p>
-                    Become part of the growing After Gate community! Connect with us on social media to get exclusive updates, behind-the-scenes content, and early announcements about beta testing opportunities. Our community is filled with passionate strategy gamers, lore enthusiasts, and fellow space war fanatics. Share your ideas, discuss strategies, and be part of the conversation that's shaping this ambitious project. Follow us on all our social channels using the links in the footer below. Join our Discord server to chat directly with other fans and occasionally with members of the development team. The journey to launch is exciting, and we want you to be part of it every step of the way! This isn't just a game - it's the type of real-time strategy experience you'll get lost in for months!
-                </p>
-            </div>
-            
-            <div class="section">
-                <div class="section-header">
-                    <img src="YOUR_GITHUB_IMAGE_LINK_CONTACT_3" alt="Stay Updated">
-                    <h2>Stay Updated on Development</h2>
-                </div>
-                <p>
-                    After Gate is actively in development, and we're making incredible progress on bringing this massive Strategy Space War Game to life! With over 100 planets being designed, dozens of unique characters being created, and complex storylines being woven together, there's always something exciting happening behind the scenes. By staying connected with us, you'll be the first to know about major milestones, gameplay reveals, character announcements, and beta testing opportunities. We're building an RTS game that players will lose themselves in for months, and we want you along for the journey from the very beginning. Subscribe to our newsletter through the contact form below, follow us on social media, and join our community channels to never miss an update!
-                </p>
-            </div>
-            
-            <div class="section">
-                <h2 style="text-align: center; color: #00ffff; text-shadow: 0 0 10px #00ffff; margin-bottom: 2rem;">Contact Form</h2>
-                
+                <h2 style="text-align: center;">Send a Message</h2>
                 <form class="contact-form" action="https://formsubmit.co/traxispathfinder@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="New Contact Form Submission - After Gate">
+                    <input type="hidden" name="_subject" value="New Contact Form Submission - Galaxy Warfare">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="text" name="_honey" style="display:none">
-                    
+
                     <div class="form-group">
                         <label for="name">Name <span class="required">*</span></label>
                         <input type="text" id="name" name="name" required placeholder="Enter your name">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="email">Email <span class="required">*</span></label>
                         <input type="email" id="email" name="email" required placeholder="Enter your email address">
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number (optional)">
-                    </div>
-                    
+
                     <div class="form-group">
                         <label for="message">Message <span class="required">*</span></label>
-                        <textarea id="message" name="message" required placeholder="Tell us what's on your mind..."></textarea>
+                        <textarea id="message" name="message" required placeholder="Bug report, feedback, or a question about the game..."></textarea>
                     </div>
-                    
+
                     <button type="submit" class="submit-btn">Send Message</button>
                 </form>
             </div>
         </div>
     </div>
-    
+
     <footer>
-        <p>&copy; 2025 After Gate. All rights reserved.</p>
-        <div class="social-icons">
-            <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="#" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="#" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
-            <a href="#" target="_blank" title="Twitch"><i class="fab fa-twitch"></i></a>
-        </div>
+        <p>Galaxy Warfare - built and maintained on <a href="https://github.com/TitanBusinessPros/The-Universe-Game" target="_blank">GitHub</a></p>
     </footer>
-    
+
     <script>
-        function showPage(pageName) {
-            // Hide all pages
+        function showPage(pageName, evt) {
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
-            
-            // Remove active class from all nav links
+
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => link.classList.remove('active'));
-            
-            // Show selected page
+
             document.getElementById(pageName).classList.add('active');
-            
-            // Add active class to clicked nav link
-            event.target.classList.add('active');
-            
-            // Scroll to top
+
+            if (evt && evt.target) {
+                evt.target.classList.add('active');
+            } else {
+                const match = document.querySelector(`.nav-link[onclick*="'${pageName}'"]`);
+                if (match) match.classList.add('active');
+            }
+
             window.scrollTo(0, 0);
         }
     </script>
