@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galaxy Warfare - How To Play</title>
+    <title>After Earth - How To Play</title>
     <style>
         * {
             margin: 0;
@@ -16,6 +16,7 @@
             background: linear-gradient(to bottom, #0a0e27, #1a1f3a);
             color: #e0e0e0;
             line-height: 1.6;
+            text-align: center;
         }
 
         nav {
@@ -122,6 +123,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
+            text-align: center;
         }
 
         .section {
@@ -130,6 +132,7 @@
             background: rgba(26, 31, 58, 0.6);
             border-radius: 10px;
             border: 1px solid rgba(0, 255, 255, 0.3);
+            text-align: center;
         }
 
         .section h2 {
@@ -137,22 +140,31 @@
             font-size: 2rem;
             text-shadow: 0 0 10px #00ffff;
             margin-bottom: 1rem;
+            text-align: center;
         }
 
         .section h3 {
             color: #ff00ff;
             font-size: 1.3rem;
             margin: 1.5rem 0 0.75rem;
+            text-align: center;
         }
 
         .section p, .section li {
             color: #c0c0c0;
             font-size: 1.05rem;
             line-height: 1.8;
+            text-align: center;
         }
 
         .section ul, .section ol {
-            margin: 0.5rem 0 0.5rem 1.5rem;
+            list-style: none;
+            margin: 0.5rem 0;
+            padding: 0;
+        }
+
+        .section li {
+            padding: 0.2rem 0;
         }
 
         .section strong {
@@ -171,6 +183,7 @@
             border: 1px solid rgba(0, 255, 255, 0.3);
             border-radius: 10px;
             padding: 1.5rem;
+            text-align: center;
         }
 
         .feature-card h3 {
@@ -178,22 +191,25 @@
             margin-top: 0;
             margin-bottom: 0.75rem;
             font-size: 1.2rem;
+            text-align: center;
         }
 
         .feature-card p {
             font-size: 0.98rem;
+            text-align: center;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 1rem;
+            margin: 1rem auto 0;
             font-size: 0.95rem;
+            text-align: center;
         }
 
         caption {
             caption-side: top;
-            text-align: left;
+            text-align: center;
             font-size: 1.1rem;
             color: #ff00ff;
             margin-bottom: 0.5rem;
@@ -201,15 +217,16 @@
         }
 
         th, td {
-            padding: 0.6rem 0.8rem;
-            text-align: left;
+            padding: 0.6rem 0.7rem;
+            text-align: center;
+            vertical-align: middle;
             border-bottom: 1px solid rgba(0, 255, 255, 0.2);
         }
 
         th {
             color: #00ffff;
             text-transform: uppercase;
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             letter-spacing: 0.5px;
             border-bottom: 2px solid rgba(0, 255, 255, 0.5);
         }
@@ -224,6 +241,34 @@
 
         .table-wrap {
             overflow-x: auto;
+        }
+
+        .unit-thumb {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.35));
+        }
+
+        .unit-thumb-icon {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 1.7rem;
+            background: rgba(0, 255, 255, 0.08);
+            border: 1px dashed rgba(0, 255, 255, 0.35);
+            border-radius: 8px;
+        }
+
+        .unit-name-cell {
+            text-align: center;
+            font-weight: bold;
+            color: #fff;
         }
 
         .badge {
@@ -258,15 +303,18 @@
             border-radius: 10px;
             padding: 1.25rem 1.4rem;
             border-top: 4px solid var(--nc, #00ffff);
+            text-align: center;
         }
 
         .nation-card h3 {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.6rem;
             margin: 0 0 0.6rem;
             color: #fff;
             font-size: 1.25rem;
+            text-align: center;
         }
 
         .nation-swatch {
@@ -282,21 +330,24 @@
             margin: 0;
             padding: 0;
             list-style: none;
+            text-align: center;
         }
 
         .nation-card li {
             font-size: 0.92rem;
             color: #bbb;
             padding: 0.15rem 0;
+            text-align: center;
         }
 
         .nation-tag {
-            display: inline-block;
+            display: block;
             font-size: 0.75rem;
             color: #ff00ff;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 0.5rem;
+            text-align: center;
         }
 
         .enemy-grid {
@@ -311,78 +362,28 @@
             border: 1px solid rgba(255, 0, 100, 0.35);
             border-radius: 10px;
             padding: 1.1rem 1.3rem;
+            text-align: center;
+        }
+
+        .enemy-card img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin: 0 auto 0.6rem;
+            display: block;
+            filter: drop-shadow(0 0 4px rgba(255, 0, 100, 0.4));
         }
 
         .enemy-card h3 {
             color: #ff4466;
             margin-bottom: 0.5rem;
             font-size: 1.1rem;
+            text-align: center;
         }
 
         .enemy-card p {
             font-size: 0.92rem;
-        }
-
-        .contact-form {
-            margin-top: 2rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            color: #00ffff;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(10, 14, 39, 0.8);
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            border-radius: 5px;
-            color: #e0e0e0;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #00ffff;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-        }
-
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .required {
-            color: #ff00ff;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, #00ffff, #ff00ff);
-            color: #0a0e27;
-            padding: 1rem 3rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .submit-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            text-align: center;
         }
 
         .keycap {
@@ -393,6 +394,13 @@
             padding: 0.05rem 0.5rem;
             font-family: monospace;
             color: #00ffff;
+        }
+
+        .note {
+            font-size: 0.88rem;
+            color: #888;
+            margin-top: 0.75rem;
+            text-align: center;
         }
 
         footer {
@@ -406,6 +414,7 @@
         footer p {
             color: #888;
             font-size: 0.9rem;
+            text-align: center;
         }
 
         footer a {
@@ -425,18 +434,18 @@
             <li><a onclick="showPage('howto', event)" class="nav-link">How To Play</a></li>
             <li><a onclick="showPage('units', event)" class="nav-link">Units</a></li>
             <li><a onclick="showPage('nations', event)" class="nav-link">Nations</a></li>
-            <li><a onclick="showPage('contact', event)" class="nav-link">Contact</a></li>
         </ul>
     </nav>
 
     <!-- HOME PAGE -->
     <div id="home" class="page active">
         <div class="hero">
-            <h1>🌌 GALAXY WARFARE 🌌</h1>
+            <h1>🌌 AFTER EARTH 🌌</h1>
             <p class="tagline">A Real-Time Space Strategy &amp; Conquest Game</p>
             <p style="font-size: 1.05rem; max-width: 700px; margin: 0 auto;">
-                Pick one of 12 rival nations, build up your homeworld, and fight for control of the galaxy -
-                against the other 11 nations, hostile Cyborg outposts, and a swarming alien Zoonester hive.
+                Earth is gone. Pick one of 12 nations that fled into the stars, build up your new homeworld,
+                and fight for control of the galaxy - against the other 11 nations, hostile Cyborg outposts,
+                and a swarming alien Zoonester hive.
             </p>
             <div class="hero-buttons">
                 <a class="btn" href="https://titanbusinesspros.github.io/The-Universe-Game/" target="_blank">▶ Play Now</a>
@@ -627,7 +636,7 @@
     <div id="units" class="page">
         <div class="hero">
             <h1>UNITS</h1>
-            <p style="font-size: 1.2rem; margin-top: 1rem;">Every unit type you can build, with real stats</p>
+            <p style="font-size: 1.2rem; margin-top: 1rem;">Every unit type you can build, with real stats and in-game art</p>
         </div>
 
         <div class="container">
@@ -643,19 +652,19 @@
                     <table>
                         <caption>✈️ Air Units</caption>
                         <thead>
-                            <tr><th>Unit</th><th>Cost</th><th>HP</th><th>Attack</th><th>Range</th><th>Speed</th><th>Hits Buildings?</th></tr>
+                            <tr><th>Art</th><th>Unit</th><th>Cost</th><th>HP</th><th>Attack</th><th>Range</th><th>Speed</th><th>Hits Buildings?</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>Radar Drone</td><td>30</td><td>50</td><td>0 (scout)</td><td>200</td><td>2.8</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td>Blazefalcon</td><td>40</td><td>60</td><td>30</td><td>120</td><td>3.5</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td>Thunderwing</td><td>60</td><td>80</td><td>40</td><td>180</td><td>2.5</td><td><span class="badge badge-yes">Yes</span></td></tr>
-                            <tr><td>Skyripper</td><td>70</td><td>70</td><td>35</td><td>140</td><td>4.0</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td>Vortexhawk</td><td>90</td><td>85</td><td>40</td><td>150</td><td>3.8</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td>Razorwing</td><td>80</td><td>75</td><td>45</td><td>200</td><td>3.3</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td>Shadowglider</td><td>200</td><td>120</td><td>70</td><td>220</td><td>2.0</td><td><span class="badge badge-yes">Yes</span></td></tr>
-                            <tr><td>Stormbreaker Bomber</td><td>180</td><td>150</td><td>90</td><td>250</td><td>1.8</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td>Frostwing</td><td>220</td><td>180</td><td>85 (freezes target 2 turns)</td><td>200</td><td>2.2</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td>Phantom Strike</td><td>150</td><td>100</td><td>50 gun / 25 missile</td><td>2000 (missile)</td><td>4.5</td><td><span class="badge badge-yes">Yes</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Radar.png" alt="Radar Drone"></td><td class="unit-name-cell">Radar Drone</td><td>30</td><td>50</td><td>0 (scout)</td><td>200</td><td>2.8</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Blazefalcon.png" alt="Blazefalcon"></td><td class="unit-name-cell">Blazefalcon</td><td>40</td><td>60</td><td>30</td><td>120</td><td>3.5</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Thunderwing.png" alt="Thunderwing"></td><td class="unit-name-cell">Thunderwing</td><td>60</td><td>80</td><td>40</td><td>180</td><td>2.5</td><td><span class="badge badge-yes">Yes</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Skyripper.png" alt="Skyripper"></td><td class="unit-name-cell">Skyripper</td><td>70</td><td>70</td><td>35</td><td>140</td><td>4.0</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Vortexhawk.png" alt="Vortexhawk"></td><td class="unit-name-cell">Vortexhawk</td><td>90</td><td>85</td><td>40</td><td>150</td><td>3.8</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/SGA-1/main/sh5.png" alt="Razorwing"></td><td class="unit-name-cell">Razorwing</td><td>80</td><td>75</td><td>45</td><td>200</td><td>3.3</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Shadowglider.png" alt="Shadowglider"></td><td class="unit-name-cell">Shadowglider</td><td>200</td><td>120</td><td>70</td><td>220</td><td>2.0</td><td><span class="badge badge-yes">Yes</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Stormbreakerbomber.png" alt="Stormbreaker Bomber"></td><td class="unit-name-cell">Stormbreaker Bomber</td><td>180</td><td>150</td><td>90</td><td>250</td><td>1.8</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Frostwing.png" alt="Frostwing"></td><td class="unit-name-cell">Frostwing</td><td>220</td><td>180</td><td>85 (freezes target 2 turns)</td><td>200</td><td>2.2</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="unit-art/phantomstrike.png" alt="Phantom Strike"></td><td class="unit-name-cell">Phantom Strike</td><td>150</td><td>100</td><td>50 gun / 25 missile</td><td>2000 (missile)</td><td>4.5</td><td><span class="badge badge-yes">Yes</span></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -664,16 +673,16 @@
                     <table>
                         <caption>🚢 Naval Units</caption>
                         <thead>
-                            <tr><th>Unit</th><th>Cost</th><th>HP</th><th>Attack</th><th>Range</th><th>Speed</th><th>Hits Buildings?</th></tr>
+                            <tr><th>Art</th><th>Unit</th><th>Cost</th><th>HP</th><th>Attack</th><th>Range</th><th>Speed</th><th>Hits Buildings?</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>Deepglider</td><td>50</td><td>100</td><td>35</td><td>100</td><td>1.8</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td>Stormbreaker</td><td>100</td><td>150</td><td>45</td><td>140</td><td>2.0</td><td><span class="badge badge-yes">Yes</span></td></tr>
-                            <tr><td>Wavecrusher</td><td>150</td><td>200</td><td>55</td><td>160</td><td>1.7</td><td><span class="badge badge-yes">Yes</span></td></tr>
-                            <tr><td>Skyfortress</td><td>250</td><td>300</td><td>25</td><td>100</td><td>1.3</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td>Tidebreaker</td><td>200</td><td>250</td><td>70</td><td>140</td><td>1.4</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td>Whisperwind</td><td>160</td><td>180</td><td>40</td><td>180</td><td>2.5</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td>Cargohauler</td><td>120</td><td>120</td><td>0 (transport, holds 10 troops)</td><td>-</td><td>1.2</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Deepglider.png" alt="Deepglider"></td><td class="unit-name-cell">Deepglider</td><td>50</td><td>100</td><td>35</td><td>100</td><td>1.8</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Stormbreaker.png" alt="Stormbreaker"></td><td class="unit-name-cell">Stormbreaker</td><td>100</td><td>150</td><td>45</td><td>140</td><td>2.0</td><td><span class="badge badge-yes">Yes</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Wavecrusher.png" alt="Wavecrusher"></td><td class="unit-name-cell">Wavecrusher</td><td>150</td><td>200</td><td>55</td><td>160</td><td>1.7</td><td><span class="badge badge-yes">Yes</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Skyfortress.png" alt="Skyfortress"></td><td class="unit-name-cell">Skyfortress</td><td>250</td><td>300</td><td>25</td><td>100</td><td>1.3</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Tidebreaker.png" alt="Tidebreaker"></td><td class="unit-name-cell">Tidebreaker</td><td>200</td><td>250</td><td>70</td><td>140</td><td>1.4</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Whisperwind.png" alt="Whisperwind"></td><td class="unit-name-cell">Whisperwind</td><td>160</td><td>180</td><td>40</td><td>180</td><td>2.5</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Cargohauler.png" alt="Cargohauler"></td><td class="unit-name-cell">Cargohauler</td><td>120</td><td>120</td><td>0 (transport, holds 10 troops)</td><td>-</td><td>1.2</td><td><span class="badge badge-no">No</span></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -682,29 +691,33 @@
                     <table>
                         <caption>🛡️ Ground Units <span style="color:#888; font-weight:normal; font-size:0.85rem;">(deploy from Harbor, transported by Cargohauler)</span></caption>
                         <thead>
-                            <tr><th>Unit</th><th>Cost</th><th>HP</th><th>Attack</th><th>Range</th><th>Speed</th><th>Hits Buildings?</th></tr>
+                            <tr><th>Art</th><th>Unit</th><th>Cost</th><th>HP</th><th>Attack</th><th>Range</th><th>Speed</th><th>Hits Buildings?</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>Groundpounders</td><td>20</td><td>40</td><td>15</td><td>60</td><td>1.0</td><td><span class="badge badge-yes">Yes</span></td></tr>
-                            <tr><td>Ironbeast</td><td>80</td><td>100</td><td>45</td><td>90</td><td>1.5</td><td><span class="badge badge-yes">Yes</span></td></tr>
-                            <tr><td>Boomcannon</td><td>100</td><td>70</td><td>60</td><td>180</td><td>0.8</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td><div class="unit-thumb-icon">🔫</div></td><td class="unit-name-cell">Groundpounders</td><td>20</td><td>40</td><td>15</td><td>60</td><td>1.0</td><td><span class="badge badge-yes">Yes</span></td></tr>
+                            <tr><td><div class="unit-thumb-icon">🎖️</div></td><td class="unit-name-cell">Ironbeast</td><td>80</td><td>100</td><td>45</td><td>90</td><td>1.5</td><td><span class="badge badge-yes">Yes</span></td></tr>
+                            <tr><td><div class="unit-thumb-icon">💣</div></td><td class="unit-name-cell">Boomcannon</td><td>100</td><td>70</td><td>60</td><td>180</td><td>0.8</td><td><span class="badge badge-no">No</span></td></tr>
                         </tbody>
                     </table>
                 </div>
+                <p class="note">Ground units are drawn as in-game icons rather than ship art - they don't have sprite artwork in the game itself.</p>
 
                 <div class="section" style="background: rgba(60, 10, 30, 0.25); border-color: rgba(255, 0, 100, 0.3); margin-top: 2.5rem;">
                     <h2 style="color: #ff4466; text-shadow: 0 0 10px #ff4466;">Hostile-Only Units</h2>
                     <p>These don't appear in your build menu - you'll only ever face them as enemies.</p>
                     <div class="enemy-grid">
                         <div class="enemy-card">
+                            <img src="unit-art/cyborgdreadnought.png" alt="Cyborg Dreadnought">
                             <h3>Cyborg Dreadnought</h3>
                             <p>300 HP, 210 attack, 500 range. The heavy backbone of Cyborg strongholds - approach in force.</p>
                         </div>
                         <div class="enemy-card">
+                            <img src="unit-art/zoonparasite.png" alt="Zoon Parasite">
                             <h3>Zoon Parasite</h3>
                             <p>200 HP, 500 range, doesn't fire a normal gun but is extremely fast (speed 5.0) and swarms aggressively.</p>
                         </div>
                         <div class="enemy-card">
+                            <img src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Roufestreal.png" alt="Roufestreal">
                             <h3>Roufestreal</h3>
                             <p>100 HP, lays space mines that detonate on anything that strays too close instead of attacking directly.</p>
                         </div>
@@ -726,7 +739,8 @@
                 <p>
                     Every nation starts with the same buildings and can build the same units - what sets them
                     apart is a set of standing bonuses to specific unit types (HP, attack power, speed, or
-                    range). Pick the nation whose bonuses match how you want to play.
+                    range). These are the same top 3 bonuses shown on the nation-select screen in-game, so
+                    what you see here is exactly what you'll see there.
                 </p>
 
                 <div class="nation-grid">
@@ -737,9 +751,6 @@
                             <li>+30% Skyfortress HP</li>
                             <li>+20% Stormbreaker HP</li>
                             <li>+20% Wavecrusher HP</li>
-                            <li>+10% Skyfortress Attack</li>
-                            <li>+20% Stormbreaker Attack</li>
-                            <li>+20% Stormbreaker Range</li>
                         </ul>
                     </div>
                     <div class="nation-card" style="--nc:#ffff00">
@@ -749,8 +760,6 @@
                             <li>+20% Blazefalcon HP</li>
                             <li>+10% Blazefalcon Attack</li>
                             <li>+10% Thunderwing Attack</li>
-                            <li>+50% Blazefalcon Speed</li>
-                            <li>+30% Thunderwing Speed</li>
                         </ul>
                     </div>
                     <div class="nation-card" style="--nc:#ff00ff">
@@ -760,10 +769,6 @@
                             <li>+40% Ironbeast HP</li>
                             <li>+30% Boomcannon HP</li>
                             <li>+20% Groundpounders HP</li>
-                            <li>+30% Ironbeast Attack</li>
-                            <li>+40% Boomcannon Attack</li>
-                            <li>-10% Ironbeast Speed</li>
-                            <li>+30% Boomcannon Range</li>
                         </ul>
                     </div>
                     <div class="nation-card" style="--nc:#00ff00">
@@ -773,8 +778,6 @@
                             <li>+20% Stormbreaker HP</li>
                             <li>+20% Deepglider HP</li>
                             <li>+20% Stormbreaker Attack</li>
-                            <li>+10% Deepglider Attack</li>
-                            <li>+10% Stormbreaker Speed</li>
                         </ul>
                     </div>
                     <div class="nation-card" style="--nc:#00ffff">
@@ -784,7 +787,6 @@
                             <li>+30% Thunderwing HP</li>
                             <li>+20% Skyfortress HP</li>
                             <li>+40% Thunderwing Attack</li>
-                            <li>+20% Thunderwing Range</li>
                         </ul>
                     </div>
                     <div class="nation-card" style="--nc:#ff8800">
@@ -794,8 +796,6 @@
                             <li>+20% Skyfortress HP</li>
                             <li>+10% Deepglider HP</li>
                             <li>+30% Deepglider Attack</li>
-                            <li>+40% Deepglider Speed</li>
-                            <li>+20% Skyfortress Speed</li>
                         </ul>
                     </div>
                     <div class="nation-card" style="--nc:#8800ff">
@@ -805,8 +805,6 @@
                             <li>+40% Ironbeast HP</li>
                             <li>+30% Deepglider HP</li>
                             <li>+30% Ironbeast Attack</li>
-                            <li>+40% Deepglider Attack</li>
-                            <li>+20% Deepglider Range</li>
                         </ul>
                     </div>
                     <div class="nation-card" style="--nc:#00ff88">
@@ -816,7 +814,6 @@
                             <li>+10% Groundpounders HP</li>
                             <li>+20% Groundpounders Attack</li>
                             <li>+20% Boomcannon Attack</li>
-                            <li>+20% Groundpounders Speed</li>
                         </ul>
                     </div>
                     <div class="nation-card" style="--nc:#ff0088">
@@ -835,8 +832,6 @@
                             <li>+30% Wavecrusher HP</li>
                             <li>+20% Stormbreaker HP</li>
                             <li>+20% Groundpounders HP</li>
-                            <li>+10% Wavecrusher Attack</li>
-                            <li>+20% Wavecrusher Range</li>
                         </ul>
                     </div>
                     <div class="nation-card" style="--nc:#0088ff">
@@ -846,8 +841,6 @@
                             <li>+30% Groundpounders HP</li>
                             <li>+20% Ironbeast HP</li>
                             <li>+10% Groundpounders Attack</li>
-                            <li>+20% Boomcannon Attack</li>
-                            <li>+10% Groundpounders Speed</li>
                         </ul>
                     </div>
                     <div class="nation-card" style="--nc:#ff8888">
@@ -857,8 +850,6 @@
                             <li>+20% Wavecrusher HP</li>
                             <li>+10% Thunderwing HP</li>
                             <li>+20% Wavecrusher Attack</li>
-                            <li>+30% Wavecrusher Speed</li>
-                            <li>+20% Blazefalcon Speed</li>
                         </ul>
                     </div>
                 </div>
@@ -889,44 +880,8 @@
         </div>
     </div>
 
-    <!-- CONTACT PAGE -->
-    <div id="contact" class="page">
-        <div class="hero">
-            <h1>CONTACT US</h1>
-            <p style="font-size: 1.2rem; margin-top: 1rem;">Questions, bug reports, or feedback on Galaxy Warfare</p>
-        </div>
-
-        <div class="container">
-            <div class="section">
-                <h2 style="text-align: center;">Send a Message</h2>
-                <form class="contact-form" action="https://formsubmit.co/traxispathfinder@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="New Contact Form Submission - Galaxy Warfare">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="text" name="_honey" style="display:none">
-
-                    <div class="form-group">
-                        <label for="name">Name <span class="required">*</span></label>
-                        <input type="text" id="name" name="name" required placeholder="Enter your name">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email <span class="required">*</span></label>
-                        <input type="email" id="email" name="email" required placeholder="Enter your email address">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Message <span class="required">*</span></label>
-                        <textarea id="message" name="message" required placeholder="Bug report, feedback, or a question about the game..."></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <footer>
-        <p>Galaxy Warfare - built and maintained on <a href="https://github.com/TitanBusinessPros/The-Universe-Game" target="_blank">GitHub</a></p>
+        <p>After Earth - built and maintained on <a href="https://github.com/TitanBusinessPros/The-Universe-Game" target="_blank">GitHub</a></p>
     </footer>
 
     <script>
