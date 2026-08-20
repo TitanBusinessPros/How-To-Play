@@ -244,22 +244,26 @@
         }
 
         .unit-thumb {
-            width: 52px;
-            height: 52px;
+            width: 156px;
+            height: 156px;
             object-fit: contain;
             display: block;
             margin: 0 auto;
+            padding: 10px;
+            background: rgba(0, 255, 255, 0.06);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 8px;
             filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.35));
         }
 
         .unit-thumb-icon {
-            width: 52px;
-            height: 52px;
+            width: 156px;
+            height: 156px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto;
-            font-size: 1.7rem;
+            font-size: 5rem;
             background: rgba(0, 255, 255, 0.08);
             border: 1px dashed rgba(0, 255, 255, 0.35);
             border-radius: 8px;
@@ -366,8 +370,8 @@
         }
 
         .enemy-card img {
-            width: 60px;
-            height: 60px;
+            width: 180px;
+            height: 180px;
             object-fit: contain;
             margin: 0 auto 0.6rem;
             display: block;
@@ -596,12 +600,18 @@
                         (Blazefalcon, Skyripper, Vortexhawk, Phantom Strike, Razorwing) - pair your fleet
                         with something that can.</li>
                     <li>Ground units can only fight other ground units.</li>
-                    <li><strong>Frostwing</strong> attacks freeze the target in place for 2 turns instead of
-                        dealing heavy damage.</li>
+                    <li><strong>Frostwing</strong> attacks freeze the target in place for 2 turns, on top of
+                        its normal 85 damage.</li>
                     <li><strong>Phantom Strike</strong> can fire a slow, shootable long-range missile (25
                         damage, 2000 range) once its cooldown is up, or fall back to its regular gun (50
                         damage) - you'll be asked to choose when both are available.</li>
+                    <li><strong>Zoon Parasites</strong> (alien hive units) deal no HP damage at all - instead
+                        they freeze whatever they hit in place for 3 full turns, at 500 range. A frozen unit
+                        can't move or attack until it thaws.</li>
+                    <li><strong>Roufestreal</strong> minelayers never attack directly - they seed space with
+                        mines that deal 20% of your unit's current HP if you get within 50 range of one.</li>
                 </ul>
+                <p class="note">Full stats and every unit's special ability are on the Units tab.</p>
             </div>
 
             <div class="section">
@@ -648,23 +658,25 @@
                     be ferried by Cargohauler to reach another planet.
                 </p>
 
+                <p class="note">"Special" lists anything that isn't just a plain stat - freeze effects, targeting restrictions, and so on. A dash means the unit fights with nothing but its raw numbers.</p>
+
                 <div class="table-wrap">
                     <table>
                         <caption>✈️ Air Units</caption>
                         <thead>
-                            <tr><th>Art</th><th>Unit</th><th>Cost</th><th>HP</th><th>Attack</th><th>Range</th><th>Speed</th><th>Hits Buildings?</th></tr>
+                            <tr><th>Art</th><th>Unit</th><th>Cost</th><th>HP</th><th>Attack</th><th>Range</th><th>Speed</th><th>Hits Buildings?</th><th>Special</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Radar.png" alt="Radar Drone"></td><td class="unit-name-cell">Radar Drone</td><td>30</td><td>50</td><td>0 (scout)</td><td>200</td><td>2.8</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Blazefalcon.png" alt="Blazefalcon"></td><td class="unit-name-cell">Blazefalcon</td><td>40</td><td>60</td><td>30</td><td>120</td><td>3.5</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Thunderwing.png" alt="Thunderwing"></td><td class="unit-name-cell">Thunderwing</td><td>60</td><td>80</td><td>40</td><td>180</td><td>2.5</td><td><span class="badge badge-yes">Yes</span></td></tr>
-                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Skyripper.png" alt="Skyripper"></td><td class="unit-name-cell">Skyripper</td><td>70</td><td>70</td><td>35</td><td>140</td><td>4.0</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Vortexhawk.png" alt="Vortexhawk"></td><td class="unit-name-cell">Vortexhawk</td><td>90</td><td>85</td><td>40</td><td>150</td><td>3.8</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/SGA-1/main/sh5.png" alt="Razorwing"></td><td class="unit-name-cell">Razorwing</td><td>80</td><td>75</td><td>45</td><td>200</td><td>3.3</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Shadowglider.png" alt="Shadowglider"></td><td class="unit-name-cell">Shadowglider</td><td>200</td><td>120</td><td>70</td><td>220</td><td>2.0</td><td><span class="badge badge-yes">Yes</span></td></tr>
-                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Stormbreakerbomber.png" alt="Stormbreaker Bomber"></td><td class="unit-name-cell">Stormbreaker Bomber</td><td>180</td><td>150</td><td>90</td><td>250</td><td>1.8</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Frostwing.png" alt="Frostwing"></td><td class="unit-name-cell">Frostwing</td><td>220</td><td>180</td><td>85 (freezes target 2 turns)</td><td>200</td><td>2.2</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td><img class="unit-thumb" src="unit-art/phantomstrike.png" alt="Phantom Strike"></td><td class="unit-name-cell">Phantom Strike</td><td>150</td><td>100</td><td>50 gun / 25 missile</td><td>2000 (missile)</td><td>4.5</td><td><span class="badge badge-yes">Yes</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Radar.png" alt="Radar Drone"></td><td class="unit-name-cell">Radar Drone</td><td>30</td><td>50</td><td>0 (scout)</td><td>200</td><td>2.8</td><td><span class="badge badge-no">No</span></td><td>Pulses a 500-range radar ping (visual only, no combat effect)</td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Blazefalcon.png" alt="Blazefalcon"></td><td class="unit-name-cell">Blazefalcon</td><td>40</td><td>60</td><td>30</td><td>120</td><td>3.5</td><td><span class="badge badge-no">No</span></td><td>Immune to Thunderwing &amp; Shadowglider gunfire</td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Thunderwing.png" alt="Thunderwing"></td><td class="unit-name-cell">Thunderwing</td><td>60</td><td>80</td><td>40</td><td>180</td><td>2.5</td><td><span class="badge badge-yes">Yes</span></td><td>Can't target Blazefalcon, Skyripper, Vortexhawk, Phantom Strike, or Razorwing</td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Skyripper.png" alt="Skyripper"></td><td class="unit-name-cell">Skyripper</td><td>70</td><td>70</td><td>35</td><td>140</td><td>4.0</td><td><span class="badge badge-no">No</span></td><td>Immune to Thunderwing &amp; Shadowglider gunfire</td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Vortexhawk.png" alt="Vortexhawk"></td><td class="unit-name-cell">Vortexhawk</td><td>90</td><td>85</td><td>40</td><td>150</td><td>3.8</td><td><span class="badge badge-no">No</span></td><td>Immune to Thunderwing &amp; Shadowglider gunfire</td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/SGA-1/main/sh5.png" alt="Razorwing"></td><td class="unit-name-cell">Razorwing</td><td>80</td><td>75</td><td>45</td><td>200</td><td>3.3</td><td><span class="badge badge-no">No</span></td><td>Immune to Thunderwing &amp; Shadowglider gunfire</td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Shadowglider.png" alt="Shadowglider"></td><td class="unit-name-cell">Shadowglider</td><td>200</td><td>120</td><td>70</td><td>220</td><td>2.0</td><td><span class="badge badge-yes">Yes</span></td><td>Can't target Blazefalcon, Skyripper, Vortexhawk, Phantom Strike, or Razorwing</td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Stormbreakerbomber.png" alt="Stormbreaker Bomber"></td><td class="unit-name-cell">Stormbreaker Bomber</td><td>180</td><td>150</td><td>90</td><td>250</td><td>1.8</td><td><span class="badge badge-no">No</span></td><td>-</td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Frostwing.png" alt="Frostwing"></td><td class="unit-name-cell">Frostwing</td><td>220</td><td>180</td><td>85</td><td>200</td><td>2.2</td><td><span class="badge badge-no">No</span></td><td><strong>Freezes the target in place for 2 turns</strong>, on top of its normal 85 damage</td></tr>
+                            <tr><td><img class="unit-thumb" src="unit-art/phantomstrike.png" alt="Phantom Strike"></td><td class="unit-name-cell">Phantom Strike</td><td>150</td><td>100</td><td>50 gun / 25 missile</td><td>2000 (missile)</td><td>4.5</td><td><span class="badge badge-yes">Yes</span></td><td>Choice of a 50-dmg regular gun or a slow, shootable 25-dmg missile at 2000 range (missile has a 5-turn cooldown)</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -673,16 +685,16 @@
                     <table>
                         <caption>🚢 Naval Units</caption>
                         <thead>
-                            <tr><th>Art</th><th>Unit</th><th>Cost</th><th>HP</th><th>Attack</th><th>Range</th><th>Speed</th><th>Hits Buildings?</th></tr>
+                            <tr><th>Art</th><th>Unit</th><th>Cost</th><th>HP</th><th>Attack</th><th>Range</th><th>Speed</th><th>Hits Buildings?</th><th>Special</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Deepglider.png" alt="Deepglider"></td><td class="unit-name-cell">Deepglider</td><td>50</td><td>100</td><td>35</td><td>100</td><td>1.8</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Stormbreaker.png" alt="Stormbreaker"></td><td class="unit-name-cell">Stormbreaker</td><td>100</td><td>150</td><td>45</td><td>140</td><td>2.0</td><td><span class="badge badge-yes">Yes</span></td></tr>
-                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Wavecrusher.png" alt="Wavecrusher"></td><td class="unit-name-cell">Wavecrusher</td><td>150</td><td>200</td><td>55</td><td>160</td><td>1.7</td><td><span class="badge badge-yes">Yes</span></td></tr>
-                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Skyfortress.png" alt="Skyfortress"></td><td class="unit-name-cell">Skyfortress</td><td>250</td><td>300</td><td>25</td><td>100</td><td>1.3</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Tidebreaker.png" alt="Tidebreaker"></td><td class="unit-name-cell">Tidebreaker</td><td>200</td><td>250</td><td>70</td><td>140</td><td>1.4</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Whisperwind.png" alt="Whisperwind"></td><td class="unit-name-cell">Whisperwind</td><td>160</td><td>180</td><td>40</td><td>180</td><td>2.5</td><td><span class="badge badge-no">No</span></td></tr>
-                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Cargohauler.png" alt="Cargohauler"></td><td class="unit-name-cell">Cargohauler</td><td>120</td><td>120</td><td>0 (transport, holds 10 troops)</td><td>-</td><td>1.2</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Deepglider.png" alt="Deepglider"></td><td class="unit-name-cell">Deepglider</td><td>50</td><td>100</td><td>35</td><td>100</td><td>1.8</td><td><span class="badge badge-no">No</span></td><td>-</td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Stormbreaker.png" alt="Stormbreaker"></td><td class="unit-name-cell">Stormbreaker</td><td>100</td><td>150</td><td>45</td><td>140</td><td>2.0</td><td><span class="badge badge-yes">Yes</span></td><td>-</td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Wavecrusher.png" alt="Wavecrusher"></td><td class="unit-name-cell">Wavecrusher</td><td>150</td><td>200</td><td>55</td><td>160</td><td>1.7</td><td><span class="badge badge-yes">Yes</span></td><td>-</td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Skyfortress.png" alt="Skyfortress"></td><td class="unit-name-cell">Skyfortress</td><td>250</td><td>300</td><td>25</td><td>100</td><td>1.3</td><td><span class="badge badge-no">No</span></td><td>Pulses a 500-range radar ping (visual only, no combat effect)</td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Tidebreaker.png" alt="Tidebreaker"></td><td class="unit-name-cell">Tidebreaker</td><td>200</td><td>250</td><td>70</td><td>140</td><td>1.4</td><td><span class="badge badge-no">No</span></td><td>-</td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Whisperwind.png" alt="Whisperwind"></td><td class="unit-name-cell">Whisperwind</td><td>160</td><td>180</td><td>40</td><td>180</td><td>2.5</td><td><span class="badge badge-no">No</span></td><td>-</td></tr>
+                            <tr><td><img class="unit-thumb" src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Cargohauler.png" alt="Cargohauler"></td><td class="unit-name-cell">Cargohauler</td><td>120</td><td>120</td><td>0 (unarmed)</td><td>-</td><td>1.2</td><td><span class="badge badge-no">No</span></td><td>Transport only - carries up to 10 ground troops, can't fight</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -691,16 +703,16 @@
                     <table>
                         <caption>🛡️ Ground Units <span style="color:#888; font-weight:normal; font-size:0.85rem;">(deploy from Harbor, transported by Cargohauler)</span></caption>
                         <thead>
-                            <tr><th>Art</th><th>Unit</th><th>Cost</th><th>HP</th><th>Attack</th><th>Range</th><th>Speed</th><th>Hits Buildings?</th></tr>
+                            <tr><th>Art</th><th>Unit</th><th>Cost</th><th>HP</th><th>Attack</th><th>Range</th><th>Speed</th><th>Hits Buildings?</th><th>Special</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td><div class="unit-thumb-icon">🔫</div></td><td class="unit-name-cell">Groundpounders</td><td>20</td><td>40</td><td>15</td><td>60</td><td>1.0</td><td><span class="badge badge-yes">Yes</span></td></tr>
-                            <tr><td><div class="unit-thumb-icon">🎖️</div></td><td class="unit-name-cell">Ironbeast</td><td>80</td><td>100</td><td>45</td><td>90</td><td>1.5</td><td><span class="badge badge-yes">Yes</span></td></tr>
-                            <tr><td><div class="unit-thumb-icon">💣</div></td><td class="unit-name-cell">Boomcannon</td><td>100</td><td>70</td><td>60</td><td>180</td><td>0.8</td><td><span class="badge badge-no">No</span></td></tr>
+                            <tr><td><div class="unit-thumb-icon">🔫</div></td><td class="unit-name-cell">Groundpounders</td><td>20</td><td>40</td><td>15</td><td>60</td><td>1.0</td><td><span class="badge badge-yes">Yes</span></td><td>-</td></tr>
+                            <tr><td><div class="unit-thumb-icon">🎖️</div></td><td class="unit-name-cell">Ironbeast</td><td>80</td><td>100</td><td>45</td><td>90</td><td>1.5</td><td><span class="badge badge-yes">Yes</span></td><td>-</td></tr>
+                            <tr><td><div class="unit-thumb-icon">💣</div></td><td class="unit-name-cell">Boomcannon</td><td>100</td><td>70</td><td>60</td><td>180</td><td>0.8</td><td><span class="badge badge-no">No</span></td><td>-</td></tr>
                         </tbody>
                     </table>
                 </div>
-                <p class="note">Ground units are drawn as in-game icons rather than ship art - they don't have sprite artwork in the game itself.</p>
+                <p class="note">Ground units can only fight other ground units, and are drawn as in-game icons rather than ship art - they don't have sprite artwork in the game itself.</p>
 
                 <div class="section" style="background: rgba(60, 10, 30, 0.25); border-color: rgba(255, 0, 100, 0.3); margin-top: 2.5rem;">
                     <h2 style="color: #ff4466; text-shadow: 0 0 10px #ff4466;">Hostile-Only Units</h2>
@@ -709,17 +721,26 @@
                         <div class="enemy-card">
                             <img src="unit-art/cyborgdreadnought.png" alt="Cyborg Dreadnought">
                             <h3>Cyborg Dreadnought</h3>
-                            <p>300 HP, 210 attack, 500 range. The heavy backbone of Cyborg strongholds - approach in force.</p>
+                            <p>300 HP, 210 attack, 500 range. Pulses a 500-range radar ping (visual only). The heavy
+                                backbone of Cyborg strongholds, with no other tricks - approach in force.</p>
                         </div>
                         <div class="enemy-card">
                             <img src="unit-art/zoonparasite.png" alt="Zoon Parasite">
                             <h3>Zoon Parasite</h3>
-                            <p>200 HP, 500 range, doesn't fire a normal gun but is extremely fast (speed 5.0) and swarms aggressively.</p>
+                            <p><strong>Deals no HP damage at all.</strong> Instead, at 500 range it freezes an enemy
+                                unit in place for <strong>3 full turns</strong> (it won't refreeze a target that's
+                                already frozen). 200 HP, extremely fast (speed 5.0). A frozen ship can't move or
+                                attack until it thaws - keep escorts nearby so a Zoon Parasite can't pick off your
+                                fleet piece by piece.</p>
                         </div>
                         <div class="enemy-card">
                             <img src="https://raw.githubusercontent.com/TitanBusinessPros/The-Universe-Game/main/Ships/Roufestreal.png" alt="Roufestreal">
                             <h3>Roufestreal</h3>
-                            <p>100 HP, lays space mines that detonate on anything that strays too close instead of attacking directly.</p>
+                            <p><strong>Never attacks directly.</strong> It rushes toward your homeworld and, once
+                                within 1000 range of you, drops a space mine roughly every 3 turns. Each mine sits
+                                still with a 50-range trigger radius and 25 HP; anything of yours that gets close
+                                sets it off for damage equal to <strong>20% of that unit's current HP</strong>, then
+                                the mine is destroyed. 100 HP itself.</p>
                         </div>
                     </div>
                 </div>
